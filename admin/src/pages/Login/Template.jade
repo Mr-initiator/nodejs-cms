@@ -1,0 +1,22 @@
+style.
+	body{
+		background:url(images/bg.jpg) no-repeat center center;
+		background-size:cover;
+	}
+.login-box.form-horizontal
+	.avtar
+		img(src="images/avtar.png")
+	.form-group
+		.col-sm-12
+			input#userName.form-control(type='test', placeholder='请输入用户名',ng-model="userName")
+	.form-group
+		.col-sm-12
+			input#userPass.form-control(type='password', placeholder='请输入密码',ng-model="userPass")
+	.form-group
+		.col-sm-12
+			input#userCheck.form-control.check.fl(type='text', placeholder='请输入验证码',ng-model="checkcode")
+			img.checkCode(ng-src="{{config.checkCodePath}}",ng-click="methods.changeCheckCode()")
+	.form-group
+		.col-sm-12
+			input.btn.btn-block.btn-primary(type='button',value='登录',ng-click='methods.loginin(userName,userPass,checkcode)')
+			input.btn.btn-block.btn-danger(type='reset',value='重置',ng-click='methods.reset()')

@@ -1,0 +1,475 @@
+@import url(./normalize.css);
+@import url(./bootstrap.css);
+
+@baseBgColor:#292e34;
+@mainBgColor:#e9eaec;
+@contentBgColor:#dad9d9;
+@baseColor:#fff;
+@mainColor:rgba(255,255,255,0.9);
+@linkColor:#707070;
+@fontColor:#474747;
+
+@baseFont:'微软雅黑';
+@baseSpace:20px;
+
+.Gradient(@base,@top,@bottom){
+	background:@base;
+    background:-moz-linear-gradient(top,@top 0%,@bottom 100%);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,@top),color-stop(100%,@bottom));
+    background:-webkit-linear-gradient(top,@top 0%,@bottom 100%);
+    background:-o-linear-gradient(top,@top 0%,@bottom 100%);
+    background:-ms-linear-gradient(top,@top 0%,@bottom 100%);
+    background:linear-gradient(to bottom,@top 0%,@bottom 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=@top,endColorstr=@bottom,GradientType=0);
+}
+
+.BoxShadow(@horizontal:1px,@vertical:1px,@blur:4px,@spread:2px,@color:rgba(190,190,190,.2)){
+	-webkit-box-shadow:@horizontal @vertical @blur @spread @color;
+	-moz-box-shadow:@horizontal @vertical @blur @spread @color;
+	-ms-box-shadow:@horizontal @vertical @blur @spread @color;
+	-o-box-shadow:@horizontal @vertical @blur @spread @color;
+	box-shadow:@horizontal @vertical @blur @spread @color;
+}
+
+.rounded-corners(@radius:8px){
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    -o-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.layui-elem-quote{
+	font-size:14px;
+	border-left-color:#486380;
+}
+
+.layui-field-title{
+	border-top-color:#486380;
+}
+
+.layui-elem-field legend{
+	font-size:16px;
+}
+
+.layui-table{
+	background:#f2f2f2;
+}
+
+.clearfix{ 
+	zoom:1;
+ 	&:before,&:after {
+ 		content: "";
+ 		display: table;
+ 	}
+ 	&:after {
+ 		clear:both;
+ 	}
+}
+
+::-webkit-scrollbar{
+	width:6px;
+}
+::-webkit-scrollbar-thumb{
+	background:#61686e;
+}
+
+::-webkit-scrollbar-track{
+	background:#292e34;
+}
+
+// 公共样式
+body,html{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:@baseBgColor;
+	font-family:@baseFont;
+	font-size:12px;
+	min-width:1000px;
+}
+
+.mt{ margin-top:@baseSpace; }
+
+.mb{ margin-bottom:@baseSpace; }
+
+.mr{ margin-right:@baseSpace; }
+
+.ml{ margin-left:@baseSpace; }
+
+.fl{ float:left; }
+
+.fr{ float:right; }
+
+.prz{ position:relative;zoom:1 }
+
+.fz16{ font-size:16px; }
+.fz14{ font-size:14px; }
+
+
+.top-level{
+	width:100%;
+	height:100%;
+}
+
+// 元件
+.button{
+	display:block;
+	height:34px;
+	line-height:34px;
+	color:@fontColor;
+	text-decoration:none;
+	text-align:center;
+	padding:0 15px;
+	font-size:14px;
+	border:none;
+	.Gradient(#FFF,#FFF,#eceaeb);
+	.rounded-corners(6px);
+	.BoxShadow;
+	transition:all 0.4s;
+	&:hover,&.active{
+		background:#3f454c;
+		color:#FFF;
+	}
+}
+
+.login-box{
+	width:430px;
+	height:410px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-225px 0 0 -205px;
+	background:#2b2b36;
+	overflow:hidden;
+	padding:40px 20px 16px 20px;
+	font-size:16px;
+	.rounded-corners(10px);
+	.check{
+		width:270px;
+		margin-right:10px;
+	}
+	.checkCode{
+		float:left;
+		height:34px;
+		width:110px;
+		background:#ccc;
+		.rounded-corners(4px);
+	}
+
+	.avtar{
+		width:79px;
+		height:79px;
+		border-radius:50%;
+		overflow:hidden;
+		margin:0 auto 30px auto;
+		background:url(../images/avtar.png) no-repeat;
+	}
+
+}
+
+
+.container{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	.main{
+		margin-left:244px;
+		background:@contentBgColor;
+		height:100%;
+		overflow-y:auto;
+	}
+}
+
+.mCSB_outside+.mCSB_scrollTools{
+	right:0;
+}
+
+.uploadImageWaper{
+	width:110px;
+	height:110px;
+	position:relative;
+	zoom:1;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:bottom;
+	border:1px solid #ccc;
+	img{
+		opacity:0;
+		filter:alpha(opacity=0);
+	}
+}
+
+
+
+// 右侧主区域
+.main-content{
+	padding:20px 20px 80px 20px;
+}
+
+// 面包屑导航
+.crumbs{
+	height:40px;
+	line-height:40px;
+	background:#3f454c;
+	padding-left:20px;
+	color:#7ec5ee;
+}
+
+// 主体内容
+.column-waper{
+	padding-right:20px;
+	background:#f2f2f2;
+	.rounded-corners(12px);
+	overflow:hidden;
+	.BoxShadow;
+	.column-list{
+		padding:0;
+		margin:0;
+		clear:both;
+		.column-list{
+			display:none;
+		}
+		&>li{
+			padding:10px 0 5px 20px;
+			list-style:none;
+			overflow:hidden;
+			border-bottom:1px solid #c9c9c9;
+			transition:all 0.4s;
+			input[type="checkbox"]{
+				float:left;
+				margin:9px 9px 0 0;
+				outline:none;
+			}
+			.common{
+				height:30px;
+				line-height:30px;
+				font-size:14px;
+				cursor:pointer;
+			}
+			.name{
+				transition:all 0.4s;
+				overflow:hidden;
+				span{
+					float:left;
+				}
+				.title{
+
+				}
+				.ObjectID{
+					padding-left:10px;
+					i{
+						font-style:normal;
+					}
+				}
+			}
+			.curd{
+				overflow:hidden;
+				a{
+					text-decoration:none;
+					float:left;
+					color:@linkColor;
+					line-height:30px;
+					position:relative;
+					padding:0 6px;
+					transition:all 0.4s;
+					&:before{
+						content:'';
+						width:1px;
+						height:12px;
+						position:absolute;
+						right:0;
+						top:9px;
+						background:#c9c9c9;
+					}
+					&:last-child:before{
+						display:none;
+					}
+				}
+			}
+		}
+		&>li:last-child{
+			border-bottom:none;
+		}
+		/* &>li:hover{
+			background:#3f454c;
+			a,.name{
+				color:#FFF;
+			}
+		} */
+	}
+}
+
+
+// 按钮盒子
+.operation-buttons{
+	overflow:hidden;
+}
+
+// 添加栏目弹框
+.addColumn,.addContent,.userManager{
+	display:none;
+	padding:25px 20px 10px 20px;
+	background:#FFF;
+}
+
+.uploadImage{
+	width:110px;
+	height:110px;
+	border-radius:4px;
+	vertical-align:bottom;
+}
+
+.layFile{
+	font-size:0;
+	overflow:hidden;
+	&>.layui-box{
+		float:left;
+		padding-right:10px;
+		font-size:0;
+		letter-spacing:-8px;
+	}
+	.layui-upload-icon{
+		font-size:14px;
+		letter-spacing:normal;
+	}
+	.layui-upload-button{
+		margin-left:10px;
+	}
+}
+
+.user-tip{
+	text-align:center;
+	font-size:14px;
+	padding:20px 0;
+}
+
+
+
+.search-key{
+	width:548px;
+	font-size:14px;
+	input{
+		float:left;
+		width:400px;
+		margin-right:10px;
+	}
+}
+
+.layui-theme{
+	background:#4d7bae;
+}
+
+.layui-none{
+	background:#fff;
+	color:#474747;
+}
+
+.layui-none:hover{
+	color:#707070;
+}
+
+
+.unread{
+	background:#FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

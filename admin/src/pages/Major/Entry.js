@@ -1,0 +1,70 @@
+import router from './Router.js';
+import header from 'components/header';
+import sideBar from 'components/sideBar';
+
+export default angular.module('major',[header,sideBar])
+	.config(router)
+	.name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
