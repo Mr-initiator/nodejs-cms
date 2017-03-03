@@ -1,7 +1,7 @@
 import router from './Router.js';
-import service from './Service.js';
+import LoginService from './Service.js';
 
-export default angular.module('login',[service])
+export default angular.module('login',[LoginService])
 	.config(router)
 	.name;
 

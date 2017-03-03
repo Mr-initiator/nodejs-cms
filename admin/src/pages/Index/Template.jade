@@ -1,1 +1,76 @@
-index
+blockquote
+	欢迎使用专业的NODE网站管理系统,建站的首选利器.
+table
+	colgroup
+		col(width="30%")
+		col(width="70%")
+	tr
+		th(colspan=2) 系统基本信息
+	tr
+		td NODE版本
+		td v6.9.1
+	tr
+		td MongoDB版本
+		td v3.2.4
+	tr
+		td POST提交最大限制
+		td
+	tr
+		td 上传文件最大限制
+		td
+	tr
+		td 服务器域名
+		td {{OsInfo.domain}}
+	tr
+		td 服务器空闲内存
+		td {{OsInfo.freemem/1024}}M
+	tr
+		td 服务器操作系统
+		td {{OsInfo.platform}}
+table
+	colgroup
+		col(width="30%")
+		col(width="70%")
+	tr
+		th(colspan=2) 信息统计
+	tr
+		td 会员数
+		td {{UserCount}}
+	tr
+		td 栏目数
+		td {{columnCount}}
+	tr
+		td 文档数
+		td {{articleCount}}
+table
+	colgroup
+		col(width="30%")
+		col(width="70%")
+	tr
+		th(colspan=2) 网站配置
+	tr
+		td 网站标题
+		td {{webConfig.webTitle}}
+	tr
+		td 网站LOGO
+		td
+			.uploadImageWaper(style='border:none')
+				img#webLogo.uploadImage.best-fit-down(ng-src='{{webConfig.webLogo}}')
+	tr
+		td 当前语言
+		td {{webConfig.language}}
+	tr
+		td SEO关键字
+		td {{webConfig.keywords}}
+	tr
+		td SEO描述
+		td {{webConfig.description}}
+table
+	colgroup
+		col(width="30%")
+		col(width="70%")
+	tr
+		th(colspan=2) 最新文档
+	tr(ng-repeat='item in lastedArticle')
+		td {{item.title}}
+		td {{item.published | date:'yyyy-MM-dd'}}

@@ -35,6 +35,7 @@
     "angular-resource": "^1.6.2",
     "angular-ui-router": "^0.4.2",
     "bootstrap": "^3.3.7",
+    "image-scale": "^2.1.0",
     "jquery": "^1.12.4",
     "sweetalert": "^1.1.3"
   }

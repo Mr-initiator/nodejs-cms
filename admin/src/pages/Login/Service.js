@@ -1,5 +1,5 @@
-export default angular.module('Service',[])
-	.factory('service',['$http','CommonJs',($http,CommonJs)=>{
+export default angular.module('LoginService',[])
+	.factory('LoginSer',['$http','CommonJs',($http,CommonJs)=>{
 		
 		let SERVER_PATH = CommonJs.SERVER_PATH;
 

@@ -1,4 +1,4 @@
-export default function Controller($scope,$state,$document,service,CommonJs){
+export default function Controller($scope,$state,$document,LoginSer,CommonJs){
 
 	// 获取登录token
 	const Token = localStorage.getItem('Token');
@@ -57,7 +57,7 @@ export default function Controller($scope,$state,$document,service,CommonJs){
 		}
 
 		// 发送登录请求
-		service.loginIn({username,password,checkcode}).then(response =>{
+		LoginSer.loginIn({username,password,checkcode}).then(response =>{
 			
 			// 获取返回数据
 			let data = response.data;
@@ -96,7 +96,7 @@ export default function Controller($scope,$state,$document,service,CommonJs){
 	// 检测登录状态是否有效
 	function validLoginStaus(Token){
 
-		service.validLoginStaus(Token).then(response=>{
+		LoginSer.validLoginStaus(Token).then(response=>{
 			
 			// 登录状态有效
 			if(!response.code){
@@ -136,4 +136,4 @@ export default function Controller($scope,$state,$document,service,CommonJs){
 
 }
 
-Controller.$inject = ['$scope','$state','$document','service','CommonJs'];
+Controller.$inject = ['$scope','$state','$document','LoginSer','CommonJs'];
