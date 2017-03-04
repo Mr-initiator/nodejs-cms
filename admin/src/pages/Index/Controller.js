@@ -1,9 +1,12 @@
 export default function Controller($scope,$state,IndexSer,CommonJs){
 
 	// 获取登录token
-	var Token = window.localStorage.getItem('Token');
+	const Token = window.localStorage.getItem('Token');
 
-	!Token && $state.go('login');
+	if(!Token){
+		$state.go('login');
+		return;
+	}
 
 	// 获取操作系统信息
 	GetOsInfo();
