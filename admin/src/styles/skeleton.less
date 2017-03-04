@@ -10,7 +10,7 @@
 @fontColor:#474747;
 
 @baseFont:'微软雅黑';
-@baseSpace:20px;
+@baseSpace:10px;
 
 .Gradient(@base,@top,@bottom){
 	background:@base;
@@ -186,6 +186,15 @@ table{
 	width:100%;
 	max-width:100%;
 }
+
+table tr{
+	transition:background 0.6s;
+}
+
+table tr:hover{
+	background:#FFF;
+}
+
 table td,
 table th{
 	padding:9px 15px;
@@ -198,6 +207,41 @@ table th{
 a:focus{
 	outline:none;
 }
+
+@font-face{
+	font-family: "iconfont";
+	src: url(./font/iconfont.eot?t=1488601744738);
+	src: url(./font/iconfont.eot?t=1488601744738#iefix) format('embedded-opentype'),
+	url(./font/iconfont.woff?t=1488601744738) format('woff'),
+	url(./font/iconfont.ttf?t=1488601744738) format('truetype'),
+	url(./font/iconfont.svg?t=1488601744738#iconfont) format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-huodongyouxian:before { content: "\3433"; }
+
+.icon-jisutuikuan:before { content: "\3436"; }
+
+.icon-kefuyouxian:before { content: "\3437"; }
+
+.icon-tushu:before { content: "\3447"; }
+
+.icon-liebiao:before { content: "\344a"; }
+
+.icon-31wodexuanzhong:before { content: "\f01d7"; }
+
+.icon-zhongtumoshi:before { content: "\f01ed"; }
+
+.icon-31guanzhu1xuanzhong:before { content: "\f0207"; }
+
+
 
 .container{
 	width:100%;
@@ -215,65 +259,6 @@ a:focus{
 	font-family:'Microsoft Yahei'!important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .uploadImageWaper{
 	width:110px;
 	height:110px;
@@ -283,7 +268,78 @@ a:focus{
 	display:inline-block;
 	vertical-align:bottom;
 	border:1px solid #ccc;
+	background:#FFF;
 }
+
+.uploadInp{
+	position:absolute;
+	left:136px;
+	bottom:34px;
+}
+
+.uploadInpBtn{
+	position:absolute;
+	left:136px;
+	bottom:0;
+	padding:0 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -111,7 +111,7 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 	// 获取网站配置
 	function GetInfo(language){
 
-		IndexSer.getInfo(Token,language).then(response=>{
+		IndexSer.getInfo(Token,language.lang_field).then(response=>{
 
 			var response = response.data;
 

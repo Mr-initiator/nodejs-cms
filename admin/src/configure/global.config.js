@@ -149,10 +149,14 @@ export default angular.module('globalConfig',[])
 			// 图片等比缩放 缩放方式best-fit-down 
 			bestFitDown(){
 
+				var bestFitDownImages = $('.best-fit-down');
+
+				bestFitDownImages.removeAttr('style');
+
 				setTimeout(function(){
 
-					$('.best-fit-down').imageScale({
-						scale:'best-fit-down',
+					bestFitDownImages.imageScale({
+						scale:'fill',
 						align:'center'
 					});
 					

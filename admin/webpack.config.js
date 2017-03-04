@@ -43,6 +43,10 @@ module.exports = {
 			{
 				test : /\.(png|jpg|jpeg|gif)$/,
 				loader : 'url-loader?limit=5000&name=images/[hash:8].[name].[ext]'
+			},
+			{
+				test : /\.(woff|svg|eot|ttf)\??.*$/,
+				loader : 'url-loader?name=font/[name].[md5:hash:hex:7].[ext]'
 			}
 		]
 	},
@@ -66,7 +70,8 @@ module.exports = {
 			config : path.join(__dirname, "/src/configure"),
 			pages : path.join(__dirname, "/src/pages"),
 			styles : path.join(__dirname, "/src/styles"),
-			components : path.join(__dirname, "/src/components")
+			components : path.join(__dirname, "/src/components"),
+			js : path.join(__dirname, "/src/javascripts")
 		}
 	}
 }

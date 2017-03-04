@@ -57,10 +57,10 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});*/
+});
 
 // 错误信息
-/*app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) {
 
   // 设置locals变量,仅在开发环境中提供
   res.locals.message = err.message;
@@ -70,6 +70,7 @@ app.use(function(req, res, next) {
   res.status(err.status || 500);
 
   res.render('error');
+  
 });*/
 
 

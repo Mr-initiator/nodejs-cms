@@ -33,17 +33,15 @@
 				border-bottom:1px solid #2a333c;
 				list-style:none;
 				line-height:40px;
-				&.active{
+				&.active,
+				&:hover{
 					.title{
-
-						.icon{
-							float:right;
-							background:#4d7bae;
+						background:#337ab7;
+						.iconfont{
+							
 						}
 						.name{
-							float:right;
-							padidng-left:0;
-							padding-right:20px;
+							
 						}
 					}
 				}
@@ -52,10 +50,10 @@
 					display:block;
 					cursor:pointer;
 					background:#3f454c;
-					.icon{
+					transition:background 0.4s;
+					.iconfont{
 						width:45px;
 						height:40px;
-						/* background:#486380; */
 						text-align:center;
 						line-height:40px;
 						font-size:18px;

@@ -1,10 +1,10 @@
 var formidable = require('formidable');
-
+var path = require('path');
 exports.formidableFormParse = function(req,callback){
     var obj ={};
     var form = new formidable.IncomingForm({
         encoding:"utf-8",
-        uploadDir:'/management/uploads',  //文件上传地址
+        uploadDir:path.join(__dirname + '/../uploads/'),  //文件上传地址
         keepExtensions:true  //保留后缀
     });
     form.parse(req)
