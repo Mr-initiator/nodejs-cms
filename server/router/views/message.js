@@ -77,9 +77,6 @@ exports.deleteMessage = function(req,res){
 
 }
 
-
-
-
 // 标记已读
 exports.signRead = function(req,res){
 
@@ -132,7 +129,32 @@ exports.signRead = function(req,res){
 
 }
 
+// 筛选消息
+exports.filterMessage = function(req,res){
 
+	var condition = Number(req.query.condition),
+		page = Number(req.query.page) || 1,
+		limit = Number(req.query.limit) || 10,
+		language = req.query.language;
+
+	switch(condition){
+		case 1 :
+			condition = {language:language};
+			break;
+		case 2 :
+			condition = {unread:false,language:language};
+			break;
+		case 3 :
+			condition = {unread:true,language:language};
+	}
+
+	messageModel.paginate(condition,{page: page, limit: limit, sort:{time:-1},}, function(err, result) {
+
+		err ? res.json({code:1,message:'留言列表获取失败'}) : res.json({code:0,message:'留言列表获取成功',result:result});
+
+	});
+
+}
 
 
 

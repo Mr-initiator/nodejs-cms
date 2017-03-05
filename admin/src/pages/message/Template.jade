@@ -1,0 +1,27 @@
+select.form-control.mb(ng-change="filter(divide)",ng-model="divide")
+	option(ng-value=1,ng-select="divide") 全部
+	option(ng-value=2) 已读
+	option(ng-value=3) 未读
+table
+	colgroup
+		col(width="20%")
+		col(width="30%")
+		col(width="15%")
+		col(width="10%")
+		col(width="10%")
+	tr
+		th 主题
+		th 内容
+		th 联系方式
+		th 时间
+		th 操作
+	tr(ng-class="{'unread':item.unread}",ng-repeat="item in messageList")
+		td(ng-bind="item.title")
+		td(ng-bind="item.content")
+		td(ng-bind="item.contact")
+		td(ng-bind="item.time | date:'yyyy-MM-dd'")
+		td
+			a(href="javascript:;",ng-click="deleteMessage(item._id)") 删除&nbsp;
+			a(href="javascript:;",ng-bind="item.unread ? '标记已读' : '已读'" ng-click="signRead(item.unread,item._id)")
+paging(page="pageConfig.page",page-size="pageConfig.pageSize",total="pageConfig.total",dots="...",show-prev-next="true",show-first-last="true",paging-action="pagination(page)",text-first="首页",text-last="尾页",text-next="下一页",text-prev="上一页")
+

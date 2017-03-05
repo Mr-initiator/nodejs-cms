@@ -11,7 +11,7 @@ form.form-horizontal(method="post")
 		label.col-sm-1.control-label.fz14 网站LOGO
 		.col-sm-11
 			.uploadImageWaper
-				img.uploadImage.best-fit-down#webLogo(ng-src="{{formData.webLogo}}")
+				img.uploadImage#webLogo(ng-src="{{formData.webLogo}}",image-scale="best-fit-down")
 			input.uploadInp(type='file',name='webLogo',uploader="uploader",nv-file-select="")
 			input.uploadInpBtn(type="button",ng-click="uploader.uploadAll()",value="上传")
 

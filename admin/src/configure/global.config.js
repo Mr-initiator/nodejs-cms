@@ -2,11 +2,13 @@ export default angular.module('globalConfig',[])
 	.factory('CommonJs',['$http','$rootScope','$state',function($http,$rootScope,$state){
 
 		$rootScope.SERVER_PATH = 'http://localhost:3000/';
+		$rootScope.LOCAL_PATH = 'http://localhost:8090/';
 
 		return {
 
 			// 服务器地址
 			SERVER_PATH : 'http://localhost:3000/',
+			LOCAL_PATH : 'http://localhost:8090/',
 
 			// 将JSON对象序列化
 			ConversionJson(ojson) {
@@ -144,23 +146,6 @@ export default angular.module('globalConfig',[])
 					}
 					
 				});
-
-			},
-			// 图片等比缩放 缩放方式best-fit-down 
-			bestFitDown(){
-
-				var bestFitDownImages = $('.best-fit-down');
-
-				bestFitDownImages.removeAttr('style');
-
-				setTimeout(function(){
-
-					bestFitDownImages.imageScale({
-						scale:'fill',
-						align:'center'
-					});
-					
-				},80)
 
 			}
 			

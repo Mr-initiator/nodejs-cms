@@ -119,12 +119,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 
 				$scope.webConfig = response.result;
 
-				// 图片等比缩放
-				CommonJs.bestFitDown();
-
 			}else{
 
-				swal('','配置获取失败,暂无配置');
+				swal('配置获取失败','暂无配置','error');
 
 			}
 			

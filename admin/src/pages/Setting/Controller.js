@@ -73,8 +73,6 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 
 					$scope.formData = response.result;
 
-					CommonJs.bestFitDown();
-
 				}else{
 
 					swal("配置写入失败","","error");
@@ -99,10 +97,6 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 			var path = JSON.parse(fileItem._xhr.responseText).file.path.split('server')[1].substr(1);
 
 			$scope.formData.webLogo = `${CommonJs.SERVER_PATH}${path}`;
-
-			CommonJs.bestFitDown();
-
-			swal("文件上传成功","","success");
 
 		};
 

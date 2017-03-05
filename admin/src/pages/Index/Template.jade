@@ -55,7 +55,7 @@ table
 		td 网站LOGO
 		td
 			.uploadImageWaper(style='border:none')
-				img#webLogo.uploadImage.best-fit-down(ng-src='{{webConfig.webLogo}}')
+				img#webLogo.uploadImage(ng-src='{{webConfig.webLogo}}',image-scale="best-fit-down")
 	tr
 		td 当前语言
 		td {{webConfig.language}}

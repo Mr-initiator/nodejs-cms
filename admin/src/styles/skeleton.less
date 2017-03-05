@@ -187,12 +187,13 @@ table{
 	max-width:100%;
 }
 
-table tr{
-	transition:background 0.6s;
-}
-
 table tr:hover{
-	background:#FFF;
+	background:#337ab7;
+}
+table tr:hover td,
+table tr:hover th,
+table tr:hover td a{
+	color:#FFF;
 }
 
 table td,
@@ -268,7 +269,10 @@ a:focus{
 	display:inline-block;
 	vertical-align:bottom;
 	border:1px solid #ccc;
-	background:#FFF;
+	img{
+		opacity:0;
+		filter:alpha(opacity=0);
+	}
 }
 
 .uploadInp{

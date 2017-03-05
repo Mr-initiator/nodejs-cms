@@ -110,6 +110,9 @@ exports.start = function(app){
 	// 删除留言
 	app.get('/message/deleteMessage',message.deleteMessage);
 
+	// 筛选留言
+	app.get('/message/filterMessage',message.filterMessage);
+
 	// 标记已读
 	app.get('/message/signRead',message.signRead);
 
