@@ -4,7 +4,7 @@
 
 管理员界面使用angularjs，单页面应用响应速度快，前后端分离，后端使用express框架，mongoDB数据库。
 
-1.cd nodeJSCMS
+1.cd nodejs-cms
 
 2.cd admin
 

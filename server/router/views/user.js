@@ -26,14 +26,22 @@ exports.addUser = function(req,res){
 
 	formParse.formidableFormParse(req,function(err,result){
 
-		// 验证栏目名称是否填写
+		// 验证用户名称是否填写
 		if(!result.username){
 			res.json({code:2,message:'用户名不能为空'});
 			return;
 		}
 
+		if(!result.password){
+
+			res.json({code:2,message:'密码不能为空'});
+
+			return;
+
+		}
+
 		// 密码加密
-		result.password = md5(md5(md5(result.password)));
+		result.password = md5(md5(md5(String(result.password))));
 
 		// 添加用户
 		userModel.create(result,function(err,result){

@@ -1,0 +1,58 @@
+.fancybox-container#fancybox-container(style="display:none")
+	form.form-horizontal(method="post")
+		.form-group
+			label.col-sm-1.control-label.f13 用户名
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入用户名',autocomplete="off",ng-model="UserData.username")
+		.form-group
+			label.col-sm-1.control-label.f13 密码
+			.col-sm-11
+				input.form-control(type='password',placeholder='请输入密码',autocomplete="off",ng-model="UserData.password")
+		.form-group
+			label.col-sm-1.control-label.f13 姓名
+			.col-sm-11
+				input.form-control(type='password',placeholder='请输入密码',autocomplete="off",ng-model="UserData.realname")
+		.form-group
+			label.col-sm-1.control-label.f13 邮箱
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入邮箱',autocomplete="off",ng-model="UserData.email")
+		.form-group
+			label.col-sm-1.control-label.f13 头像
+			.col-sm-11
+				.uploadImageWaper
+					img.uploadImage(ng-src="{{UserData.userhead}}",image-scale="best-fit-down")
+				input.uploadInp(type='file',uploader="uploader",nv-file-select="")
+				input.uploadInpBtn(type="button",ng-click="uploader.uploadAll()",value="上传")
+		.form-group
+			label.col-sm-1.control-label.f13 管理员
+			.col-sm-11
+				label.radio-inline
+					input(type='radio',value='true',name='isAdmin',ng-model="UserData.isAdmin")
+					|  是
+				label.radio-inline
+					input(type='radio',value='false',name='isAdmin',ng-model="UserData.isAdmin",ng-checked='true')
+					|  否
+		.form-group
+			label.col-sm-1.control-label
+			.col-sm-11
+				button.btn.btn-primary(ng-click="addUser()") 立即提交
+				button.btn.btn-danger.ml 重置
+
+.operation-buttons.mb
+	a#fancybox-trigger.button.fl.mr(href="#fancybox-container") 添加用户
+table
+	tr
+		th 用户名
+		th 真实姓名
+		th 邮件地址
+		th 用户级别
+		th 操作
+	tr(ng-repeat='item in userinfos.docs')
+		td
+			span(ng-bind='item.username')
+		td(ng-bind='item.realname')
+		td(ng-bind='item.email')
+		td(ng-bind="item.isAdmin ? '管理员' : '普通用户' ")
+		td
+			a(href='javascript:;', ng-click='deleteUserByID(item._id)') 删除
+paging(page="pageConfig.page",page-size="pageConfig.pageSize",total="pageConfig.total",dots="...",show-prev-next="true",show-first-last="true",paging-action="pagination(page)",text-first="首页",text-last="尾页",text-next="下一页",text-prev="上一页")

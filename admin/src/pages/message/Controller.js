@@ -26,6 +26,13 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 		total:100
 	}
 
+
+	// 消息默认分类
+	$scope.divide = 1;
+
+	// 筛选消息
+	$scope.filter = filter;
+
 	// 获取留言列表
 	function getMessage(){
 
@@ -162,10 +169,6 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 		getMessage();
 
 	}
-
-	$scope.divide = 1;
-
-	$scope.filter = filter;
 
 	// 筛选消息
 	function filter(condition){

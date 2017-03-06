@@ -2,35 +2,35 @@ form.form-horizontal(method="post")
 	.form-group
 		label.col-sm-1.control-label.f13 网站根地址
 		.col-sm-11
-			input.form-control(type='text',name="rootDir",placeholder='请输入网站根地址',autocomplete="off",ng-model="formData.rootDir")
+			input.form-control(type='text',placeholder='请输入网站根地址',autocomplete="off",ng-model="formData.rootDir")
 	.form-group
 		label.col-sm-1.control-label.f13 网站名称
 		.col-sm-11
-			input.form-control(type='text',name="webTitle",placeholder='请输入网站名称',autocomplete="off",ng-model="formData.webTitle")
+			input.form-control(type='text',placeholder='请输入网站名称',autocomplete="off",ng-model="formData.webTitle")
 	.form-group
 		label.col-sm-1.control-label.f13 网站LOGO
 		.col-sm-11
 			.uploadImageWaper
-				img.uploadImage#webLogo(ng-src="{{formData.webLogo}}",image-scale="best-fit-down")
-			input.uploadInp(type='file',name='webLogo',uploader="uploader",nv-file-select="")
+				img.uploadImage(ng-src="{{SERVER_PATH}}{{formData.webLogo}}",image-scale="best-fit-down")
+			input.uploadInp(type='file',uploader="uploader",nv-file-select="")
 			input.uploadInpBtn(type="button",ng-click="uploader.uploadAll()",value="上传")
 
 	.form-group
 		label.col-sm-1.control-label.f13 网站描述
 		.col-sm-11
-			input.form-control(type='text',name="description",placeholder='请输入网站描述',autocomplete="off",ng-model="formData.description")
+			input.form-control(type='text',placeholder='请输入网站描述',autocomplete="off",ng-model="formData.description")
 	.form-group
 		label.col-sm-1.control-label.f13 网站关键字
 		.col-sm-11
-			input.form-control(type='text',name="keywords",placeholder='请输入网站关键字',autocomplete="off",ng-model="formData.keywords")
+			input.form-control(type='text',placeholder='请输入网站关键字',autocomplete="off",ng-model="formData.keywords")
 	.form-group
 		label.col-sm-1.control-label.f13 网站版权
 		.col-sm-11
-			input.form-control(type='text',name="copyright",placeholder='请输入网站版权',autocomplete="off",ng-model="formData.copyright")
+			input.form-control(type='text',placeholder='请输入网站版权',autocomplete="off",ng-model="formData.copyright")
 	.form-group
 		label.col-sm-1.control-label.f13 网站备案号
 		.col-sm-11
-			input.form-control(type='text',name="recordNumber",placeholder='请输入网站备案号',autocomplete="off",ng-model="formData.recordNumber")
+			input.form-control(type='text',placeholder='请输入网站备案号',autocomplete="off",ng-model="formData.recordNumber")
 	.form-group
 		label.col-sm-1.control-label
 		.col-sm-11

@@ -96,7 +96,7 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 
 			var path = JSON.parse(fileItem._xhr.responseText).file.path.split('server')[1].substr(1);
 
-			$scope.formData.webLogo = `${CommonJs.SERVER_PATH}${path}`;
+			$scope.formData.webLogo = path;
 
 		};
 
