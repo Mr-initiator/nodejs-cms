@@ -75,7 +75,7 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 
 				}else{
 
-					swal("配置写入失败","","error");
+					swal("配置获取失败","","error");
 
 				}
 
@@ -107,11 +107,6 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 		};
 
 	}
-
-	
-
-
-	
 
 
 }

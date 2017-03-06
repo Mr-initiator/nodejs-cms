@@ -1,0 +1,19 @@
+form.form-horizontal(method="post")
+	.form-group
+		label.col-sm-1.control-label.fz13 语言选择
+		.col-sm-11
+			button.btn.mr(ng-repeat="item in langList",class="{{item.isChecked ? 'btn-primary' : 'btn-danger'}}",data-field="{{item.lang_field}}")
+				span(ng-click="selectLang(item.isChecked,item.lang_field)") {{item.lang_name}}
+				b.custom-origin(ng-click="deleteLangById(item._id,item.lang_field)") 删除
+	.form-group
+		label.col-sm-1.control-label.fz13 语言名称
+		.col-sm-11
+			input.form-control(type='text',name="rootDir",placeholder='请填写语言名称,用于显示',autocomplete="off",ng-model="lang_name")
+	.form-group
+		label.col-sm-1.control-label.fz13 对应字段
+		.col-sm-11
+			input.form-control(type='text',name="rootDir",placeholder='请填写字段名称,用于入库',autocomplete="off",ng-model="lang_field")
+	.form-group
+		label.col-sm-1.control-label
+		.col-sm-11
+			button.btn.btn-primary(ng-click="addLanguage(lang_name,lang_field)") 添加
