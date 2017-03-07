@@ -16,8 +16,7 @@ var columnSchema = new mongoose.Schema({
 	linksType     : String,
 	switch        : Boolean,
 	columnBrief   : String,
-	columnContent : String,
-	banPath		  : Array
+	columnContent : String
 });
 
 
