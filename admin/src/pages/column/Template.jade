@@ -13,7 +13,7 @@ script#recursion(type='text/ng-template').
 		<div class="curd common fr">
 			<a class="operation" href="{{item.route}}" target="_blank" ng-if="item.route">预览</a>
 			<a class="operation" ui-sref="main.content({id:item._id,model:item.model})">内容管理</a>
-			<a class="operation" hrer="javascript:;" ng-click="addChildColumn(item._id)">增加子栏目</a>
+			<div fancybox class="operation" href="#fancybox-column" ng-click="addChildColumn(item._id)">增加子栏目</div>
 			<div fancybox class="operation" href="#fancybox-column" ng-click="modifyfancy(item._id)">修改</div>
 			<a class="operation" href="javascript:;" ng-click="deleteColumn(item._id)">删除</a>
 		</div>

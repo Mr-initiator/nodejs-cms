@@ -67,6 +67,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 	// 修改栏目
 	$scope.modifyColumn = modifyColumn;
 
+	// 增加子栏目
+	$scope.addChildColumn = addChildColumn;
+
 	// 获取栏目信息
 	function getAllColumn(){
 
@@ -472,6 +475,47 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 			// 提示添加成功与否的信息
 			swal(response.message,'');
+
+		});
+
+	}
+
+	// 增加子栏目
+	function addChildColumn(id){
+
+		CommonJs.getCurrentLang(Token,function(language){
+
+			// 当前选中语言
+			var currentLanguage = language.lang_field;
+
+			// 根据栏目ID获取指定栏目信息
+			ColumnSer.getOneColumnById(id,Token).then(response=>{
+
+				var response = response.data;
+
+				if(!response.code){
+
+					// 让当前父栏目选中
+					$scope.formData.parent = id;
+					
+					// 为父栏目重新赋值
+					$scope.columnInfomations = response.result;
+
+					// 当前选中语言
+					$scope.formData.language = currentLanguage;
+
+				}else{
+
+					// 如果token不合法
+					if(response.code == 10 || response.code == 11 || response.code == 12){
+
+					    $state.go('login');
+
+					}
+
+				}
+
+			});
 
 		});
 
