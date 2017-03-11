@@ -20,6 +20,8 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 	// 初始化编辑器
 	let EdtorModule = initEditor();
 
+	$scope.sign = { isModify : false,modifyID : 0 };
+
 	// 表单字段
 	$scope.formData = {
 		parent : 'none',
@@ -31,7 +33,7 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 		forceUrl : '',
 		weight : '',
 		route : '',
-		cover : '',
+		cover : 'images/image.jpg',
 		linksType : '0',
 		switch : true,
 		columnBrief : '',
@@ -58,6 +60,12 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 	// 重置表单
 	$scope.resetForm = resetForm;
+
+	// 修改栏目弹出
+	$scope.modifyfancy = modifyfancy;
+
+	// 修改栏目
+	$scope.modifyColumn = modifyColumn;
 
 	// 获取栏目信息
 	function getAllColumn(){
@@ -232,10 +240,14 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 	// 添加栏目弹出
 	function columnFancy(){
 
+		$scope.sign = { isModify : false,modifyID : 0 } 
+
 		// 调用fancybox插件
 		columnTrigger.fancybox({
 
 			beforeLoad(){
+
+				resetForm();
 
 				// 弹出之前 获取当前栏目语言 父级栏目集合
 				CommonJs.getCurrentLang(Token,language=>{
@@ -335,15 +347,135 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 			forceUrl : '',
 			weight : '',
 			route : '',
-			cover : '',
+			cover : 'images/image.jpg',
 			linksType : '0',
 			switch : true,
 			columnBrief : '',
 			columnContent : ''
 		}
 
+		// 获取栏目简介
+		$scope.formData.columnBrief = EdtorModule.editorIns.$txt.html('<p><br></p>');
+
+		// 获取栏目内容
+		$scope.formData.columnContent = EdtorModule.editorCon.$txt.html('<p><br></p>');
+
 	}
 
+	// 修改栏目弹出
+	function modifyfancy(id){
+
+		$scope.sign = { isModify : true,modifyID : id } 
+
+		CommonJs.getCurrentLang(Token,function(language){
+
+			// 获取所有栏目信息 放在父栏目中
+			ColumnSer.getAllColumn(Token,language.lang_field).then(response=>{
+					
+				var response = response.data;
+
+				if(!response.code){
+
+					// 获取所有栏目信息 放在弹框中的父栏目中
+					$scope.columnInfomations = response.result;
+
+					// 根据ID获取指定栏目信息
+					ColumnSer.getOneColumnById(id,Token).then(response=>{
+
+						var response = response.data;
+
+						// 栏目信息获取成功
+						if(!response.code){
+
+							var result = response.result[0];
+
+							// 获取表单信息 用户修改栏目 为表单赋默认值
+							$scope.formData = result;
+
+							// 当前选择语言
+							$scope.formData.language =  language.lang_field;
+
+							// 栏目简介
+							EdtorModule.editorIns.$txt.html(result.columnBrief);
+
+							// 栏目内容
+							EdtorModule.editorCon.$txt.html(result.columnContent);
+
+
+						}else{
+
+							// 如果token不合法
+							if(response.code == 10 || response.code == 11 || response.code == 12){
+
+							    $state.go('login');
+
+							}
+
+							// 栏目信息获取失败
+							swal("",response.message,"error");
+
+						}
+
+					});
+
+				}else{
+
+					// 如果token不合法
+					if(response.code == 10 || response.code == 11 || response.code == 12){
+
+					    $state.go('login');
+
+					}
+
+				}
+
+			});
+
+		});
+		
+	}
+
+	// 修改栏目
+	function modifyColumn(id){
+
+		// 获取栏目简介
+		$scope.formData.columnBrief = EdtorModule.editorIns.$txt.html();
+
+		// 获取栏目内容
+		$scope.formData.columnContent = EdtorModule.editorCon.$txt.html();
+
+		// 获取权重
+		$scope.formData.weight = !$scope.formData.weight ? 1 : $scope.formData.weight;
+
+		ColumnSer.modifyColumnById(id,$scope.formData,Token).then(response=>{
+
+			var response = response.data;
+
+			if(!response.code){
+
+				// 关闭添加栏目弹出层
+				$.fancybox.close();
+
+				// 重新获取栏目
+				getAllColumn();
+
+			}else{
+
+				// 如果token不合法
+				if(response.code == 10 || response.code == 11 || response.code == 12){
+
+				    $state.go('login');
+
+				}
+
+			}
+
+			// 提示添加成功与否的信息
+			swal(response.message,'');
+
+		});
+
+	}
 
 
 	// 将数据格式化成树状结构

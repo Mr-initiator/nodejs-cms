@@ -15,4 +15,13 @@ export default angular.module('dirModule',[])
 		}
 
 	}])
+	.directive('fancybox',[()=>{
+
+		return (scope,element,attributes)=>{
+
+			$(element).fancybox({})
+
+		}
+
+	}])
 	.name;

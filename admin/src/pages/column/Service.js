@@ -51,15 +51,11 @@ export default angular.module('ColumnService',[])
 			modifyColumnById(id,formData,Token){
 
 				// 发送请求
-				$http({
+				return $http({
 					method:'post',
 					url : `${SERVER_PATH}column/modifyColumnById`,
 					data : formData,
 					params : {id,Token}
-				}).then(response=>{
-					// 向外广播
-					$rootScope.$broadcast('modifyColumnById.Updated',response.data);
-
 				})
 
 			}

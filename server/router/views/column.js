@@ -16,10 +16,12 @@ exports.addColumn = function(req,res){
 			return;
 		}
 
-
+		
 		// 添加栏目
 		columnModel.create(result,function(err,result){
 			
+			// console.log(err)
+
 			// 向前台发送 栏目添加是否成功的信息
 			err ? res.json({code : 1,message:'栏目添加失败'}) : res.json({code : 0,message : '添加栏目成功'});
 
