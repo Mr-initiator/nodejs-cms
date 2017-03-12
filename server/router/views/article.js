@@ -19,7 +19,7 @@ exports.addArticle = function(req,res){
 
 		// 添加栏目
 		articleModel.create(result,function(err,result){
-			
+
 			// 向前台发送 栏目添加是否成功的信息
 			err ? res.json({code : 1,message:'文章添加失败'}) : res.json({code : 0,message : '文章添加成功'});
 

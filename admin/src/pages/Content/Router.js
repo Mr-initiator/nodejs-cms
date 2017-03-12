@@ -4,7 +4,7 @@ import controller from './Controller.js';
 export default function router($stateProvider){
 
 	$stateProvider.state('major.content',{
-		url : '/content',
+		url : '/content/:model/:id',
 		views : {
 			'multiple' : {
 				template : template,
