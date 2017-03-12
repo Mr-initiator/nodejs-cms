@@ -55,6 +55,9 @@ export default function Controller($scope,$state,UserSer,CommonJs,FileUploader){
 				
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			// 获取成功
 			if(!response.code){
 
@@ -73,15 +76,6 @@ export default function Controller($scope,$state,UserSer,CommonJs,FileUploader){
 
 				$scope.userinfos = result;
 
-			}else{
-
-				// token 验证失败
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					$state.go('login');
-
-				}
-
 			}
 
 		})
@@ -95,6 +89,9 @@ export default function Controller($scope,$state,UserSer,CommonJs,FileUploader){
 		UserSer.addUser($scope.UserData,Token).then(response=>{
 
 			var response = response.data;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
 			// 添加用户成功
 			if(!response.code){
@@ -116,12 +113,6 @@ export default function Controller($scope,$state,UserSer,CommonJs,FileUploader){
 				getUserList();
 
 			}else{
-
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-				    $state.go('login');
-
-				}
 
 				swal('用户添加失败',response.message,'error');
 
@@ -146,20 +137,14 @@ export default function Controller($scope,$state,UserSer,CommonJs,FileUploader){
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(!response.code){
 
 				getUserList();
 
 				swal("用户删除成功","","success");
-
-			}else{
-
-				// token 验证失败
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					$state.go('login');
-
-				}
 
 			}
 

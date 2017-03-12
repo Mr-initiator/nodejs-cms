@@ -121,6 +121,8 @@ export default angular.module('globalConfig',[])
 			// 获取当前选中的语言
 			getCurrentLang(Token,callback){
 
+				var This = this;
+
 				$http({
 					method:'get',
 					url:`${$rootScope.SERVER_PATH}language/getCurrentLang`,
@@ -129,23 +131,56 @@ export default angular.module('globalConfig',[])
 
 					var response = response.data;
 
+					// 检查令牌是否失效
+					if(This.checkRequestCode(response.code)) return;
+
 					if(!response.code){
 
 						callback && callback(response.result);
 
 					}else{
 
-						if(response.code == 10 || response.code == 11 || response.code == 12){
-
-							$state.go('login');
-
-						}
-
 						swal('','当前选中语言获取失败');
 
 					}
 					
 				});
+
+			},
+			// 检测登录状态是否有效
+			validLoginStaus(Token){
+
+				var result = null ;
+
+				$.ajax({
+					method:'get',
+					url:`${$rootScope.SERVER_PATH}login/validLoginStaus`,
+					async: false,
+					data:{ Token },
+					success:function(response){
+						
+						result = response;
+
+					}
+				});
+
+				return result;
+
+			},
+			// 登录状态失效
+			checkRequestCode(Code){
+
+				if(Code == 10 || Code == 11 || Code == 12){
+
+					localStorage.clear();
+
+					$state.go('login');
+
+					return true;
+
+				}
+
+				return false;
 
 			}
 			

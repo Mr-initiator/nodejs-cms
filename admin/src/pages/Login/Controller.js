@@ -3,6 +3,22 @@ export default function Controller($scope,$state,$document,LoginSer,CommonJs){
 	// 获取登录token
 	const Token = localStorage.getItem('Token');
 
+	// 检测登录状态是否有效
+	if(Token){
+
+		var response = CommonJs.validLoginStaus(Token);
+
+		if(response.code == 10 || response.code == 11 || response.code == 12){
+
+			localStorage.clear();
+
+			return;
+
+		}
+
+	}
+
+
 	// 方法集合
 	let methods = {
 		loginin, // 登录
@@ -17,8 +33,9 @@ export default function Controller($scope,$state,$document,LoginSer,CommonJs){
 		checkCodePath : `${CommonJs.SERVER_PATH}checkcode.png`
 	}
 	
-	// 检测登录状态是否有效
-	Token && validLoginStaus(Token);
+	
+
+
 
 	// 回车登录
 	$document.on('keyup',enterLogin);

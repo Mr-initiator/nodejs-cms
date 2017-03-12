@@ -18,6 +18,8 @@ module.exports = function(req, res, next) {
 
         res.json({code:10,message:'令牌过期'});
 
+        return;
+
       }
 
       // Token验证通过 继续执行
@@ -28,12 +30,16 @@ module.exports = function(req, res, next) {
       // Token解析不成功
       res.json({code:11,message:'Token解析失败'});
 
+      return;
+
     }
 
   } else {
 
     // Token不存在
     res.json({code:12,message:'Token解析失败'});
+
+    return;
 
   }
 

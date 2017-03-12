@@ -1,11 +1,14 @@
 export default function Controller($scope,$state,IndexSer,CommonJs){
 
-	// 获取登录token
+	// 获取登录Token
 	const Token = window.localStorage.getItem('Token');
 
 	if(!Token){
+
 		$state.go('login');
+
 		return;
+
 	}
 
 	// 获取操作系统信息
@@ -33,9 +36,14 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 
 			var response = response.data;
 
-			if(response.code) return;
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
-			$scope.OsInfo = response.data;
+			if(!response.code){
+
+				$scope.OsInfo = response.data;
+
+			}
 			
 		});
 
@@ -47,6 +55,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 		IndexSer.GetUserCount(Token).then(response=>{
 
 			var response = response.data;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
 			if(response.code) return;
 
@@ -70,6 +81,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(response.code) return;
 			
 			$scope.columnCount = response.result;
@@ -86,6 +100,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 			var response = response.data;
 
 			if(response.code) return;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 			
 			$scope.articleCount = response.result;
 
@@ -99,6 +116,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 		IndexSer.getLastedArticle({Token,language,limit:10}).then(response=>{
 
 			var response = response.data;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
 			if(response.code) return;
 
@@ -114,6 +134,9 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 		IndexSer.getInfo(Token,language.lang_field).then(response=>{
 
 			var response = response.data;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
 			if(!response.code){
 

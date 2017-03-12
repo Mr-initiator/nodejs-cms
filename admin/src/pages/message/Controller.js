@@ -47,6 +47,9 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				// 获取成功
 				if(!response.code){
 
@@ -57,15 +60,6 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 					var result = response.result;
 
 					$scope.messageList = result.docs;
-
-				}else{
-
-					// token 验证失败
-					if(response.code == 10 || response.code == 11 || response.code == 12){
-
-						$state.go('login');
-
-					}
 
 				}
 
@@ -83,6 +77,9 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 			MessageSer.signRead({id,Token}).then((response)=>{
 
 				var response = response.data;
+
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
 
 				if(!response.code){
 
@@ -139,6 +136,9 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				if(!response.code){
 
 					swal({
@@ -193,6 +193,9 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				// 获取成功
 				if(!response.code){
 
@@ -203,17 +206,6 @@ export default function Controller($scope,$state,MessageSer,CommonJs){
 					var result = response.result;
 
 					$scope.messageList = result.docs;
-
-					console.log($scope.messageList)
-
-				}else{
-
-					// token 验证失败
-					if(response.code == 10 || response.code == 11 || response.code == 12){
-
-						$state.go('login');
-
-					}
 
 				}
 

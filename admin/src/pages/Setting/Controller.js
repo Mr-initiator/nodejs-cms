@@ -41,6 +41,9 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				if(!response.code){
 
 					swal("配置写入成功","","success");
@@ -68,6 +71,9 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 			SettingSer.getInfo(Token,language.lang_field).then(response=>{
 
 				var response = response.data;
+
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
 
 				if(!response.code){
 

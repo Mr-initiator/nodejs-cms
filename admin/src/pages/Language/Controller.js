@@ -54,6 +54,9 @@ export default function Controller($scope,$state,LanguageSer,CommonJs){
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(!response.code){
 
 				$scope.lang_name = '';
@@ -62,14 +65,6 @@ export default function Controller($scope,$state,LanguageSer,CommonJs){
 				// 获取语言列表
 				getLanguage();
 
-
-			}else{
-
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					$state.go('login');
-
-				}
 
 			}
 
@@ -86,17 +81,14 @@ export default function Controller($scope,$state,LanguageSer,CommonJs){
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(!response.code){
 
 				$scope.langList = response.result;
 
 			}else{
-
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					$state.go('login');
-
-				}
 
 				swal('',response.message);
 				
@@ -120,6 +112,9 @@ export default function Controller($scope,$state,LanguageSer,CommonJs){
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(!response.code){
 
 				getLanguage();
@@ -138,6 +133,9 @@ export default function Controller($scope,$state,LanguageSer,CommonJs){
 		LanguageSer.deleteLangById({ id,lang_field,Token }).then(response=>{
 
 			var response = response.data;
+
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
 
 			if(!response.code){
 

@@ -81,6 +81,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				if(!response.code){
 
 					// 所有栏目信息 删除时候用
@@ -90,12 +93,6 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 					$scope.allColumnTree = formatTreeData(response.result);
 
 				}else{
-
-					if(response.code == 10 || response.code == 11 || response.code == 12){
-
-						$state.go('login');
-
-					}
 
 					// 栏目信息获取失败
 					swal("栏目信息获取失败",response.message,"error");
@@ -162,6 +159,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 					var response = response.data;
 
+					// 检查令牌是否失效
+					if(CommonJs.checkRequestCode(response.code)) return;
+
 					// 栏目删除成功
 					if(!response.code){
 
@@ -173,14 +173,6 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 					}else{
 
 						// 栏目删除失败
-
-						// 如果token不合法
-						if(response.code == 10 || response.code == 11 || response.code == 12){
-
-						    $state.go('login');
-
-						}
-
 						swal("栏目删除失败","","error");
 
 					}
@@ -263,18 +255,15 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 						var response = response.data;
 
+						// 检查令牌是否失效
+						if(CommonJs.checkRequestCode(response.code)) return;
+
 						if(!response.code){
 
 							// 放在弹框中的父栏目中
 							$scope.columnInfomations = response.result;
 
 						}else{
-
-							if(response.code == 10 || response.code == 11 || response.code == 12){
-
-							    $state.go('login');
-
-							}
 
 							// 栏目信息获取失败
 							swal("父级栏目信息获取失败",response.message,"error");
@@ -308,6 +297,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			// 栏目删除成功
 			if(!response.code){
 
@@ -317,15 +309,6 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 				$.fancybox.close();
 
 				resetForm();
-
-			}else{
-
-				// 如果token不合法
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-				    $state.go('login');
-
-				}
 
 			}
 
@@ -377,6 +360,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 					
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				if(!response.code){
 
 					// 获取所有栏目信息 放在弹框中的父栏目中
@@ -386,6 +372,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 					ColumnSer.getOneColumnById(id,Token).then(response=>{
 
 						var response = response.data;
+
+						// 检查令牌是否失效
+						if(CommonJs.checkRequestCode(response.code)) return;
 
 						// 栏目信息获取成功
 						if(!response.code){
@@ -407,28 +396,12 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 						}else{
 
-							// 如果token不合法
-							if(response.code == 10 || response.code == 11 || response.code == 12){
-
-							    $state.go('login');
-
-							}
-
 							// 栏目信息获取失败
 							swal("",response.message,"error");
 
 						}
 
 					});
-
-				}else{
-
-					// 如果token不合法
-					if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					    $state.go('login');
-
-					}
 
 				}
 
@@ -454,6 +427,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 			var response = response.data;
 
+			// 检查令牌是否失效
+			if(CommonJs.checkRequestCode(response.code)) return;
+
 			if(!response.code){
 
 				// 关闭添加栏目弹出层
@@ -461,15 +437,6 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 				// 重新获取栏目
 				getAllColumn();
-
-			}else{
-
-				// 如果token不合法
-				if(response.code == 10 || response.code == 11 || response.code == 12){
-
-				    $state.go('login');
-
-				}
 
 			}
 
@@ -493,6 +460,9 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 				var response = response.data;
 
+				// 检查令牌是否失效
+				if(CommonJs.checkRequestCode(response.code)) return;
+
 				if(!response.code){
 
 					// 让当前父栏目选中
@@ -503,15 +473,6 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 					// 当前选中语言
 					$scope.formData.language = currentLanguage;
-
-				}else{
-
-					// 如果token不合法
-					if(response.code == 10 || response.code == 11 || response.code == 12){
-
-					    $state.go('login');
-
-					}
 
 				}
 

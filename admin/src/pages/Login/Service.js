@@ -15,16 +15,6 @@ export default angular.module('LoginService',[])
 					data : formData
 				})
 
-			},
-			// 检测登录状态是否有效
-			validLoginStaus(Token){
-
-				return $http({
-					method : 'get',
-					url :`${SERVER_PATH}login/validLoginStaus`,
-					params : { Token }
-				});
-
 			}
 
 		}
