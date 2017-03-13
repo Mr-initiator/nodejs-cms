@@ -105,32 +105,31 @@ exports.start = function(app){
 	app.post('/message/sendMessage',message.sendMessage);
 
 	// 获取留言
-	app.get('/message/getMessage',message.getMessage);
+	app.get('/message/getMessage',[jwtauth],message.getMessage);
 
 	// 删除留言
-	app.get('/message/deleteMessage',message.deleteMessage);
+	app.get('/message/deleteMessage',[jwtauth],message.deleteMessage);
 
 	// 筛选留言
-	app.get('/message/filterMessage',message.filterMessage);
+	app.get('/message/filterMessage',[jwtauth],message.filterMessage);
 
 	// 标记已读
-	app.get('/message/signRead',message.signRead);
+	app.get('/message/signRead',[jwtauth],message.signRead);
 
 	// 添加语言
-	app.post('/language/addLanguage',language.addLanguage);
+	app.post('/language/addLanguage',[jwtauth],language.addLanguage);
 
 	// 获取语言列表
-	app.get('/language/getLanguage',language.getLanguage);
+	app.get('/language/getLanguage',[jwtauth],language.getLanguage);
 
 	// 选择语言
-	app.get('/language/selectLang',language.selectLang);
+	app.get('/language/selectLang',[jwtauth],language.selectLang);
 
 	// 获取当前选中的语言
-	app.get('/language/getCurrentLang',language.getCurrentLang);
+	app.get('/language/getCurrentLang',[jwtauth],language.getCurrentLang);
 
 	// 根据ID删除语言
-	app.get('/language/deleteLangById',language.deleteLangById);
-	
+	app.get('/language/deleteLangById',[jwtauth],language.deleteLangById);
 
 }
 

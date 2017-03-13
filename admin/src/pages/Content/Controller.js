@@ -240,6 +240,7 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 	}
 
 
+
 }
 
 Controller.$inject = ['$scope','$state','$stateParams','ContentSer','CommonJs'];
