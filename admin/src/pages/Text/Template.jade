@@ -10,7 +10,7 @@
 			span.input-group-btn
 				button.btn.btn-primary(type='button',ng-click="search(key)") 搜索
 				button.btn.btn-danger(type='button',ng-click="reset()") 重置
-table
+table.article-list
 	tr
 		th 标题
 		th 是否推荐
@@ -19,15 +19,16 @@ table
 		th 操作
 	tr(ng-repeat='item in articleList.docs')
 		td
-			input(type='checkbox', ng-checked='item.state', ng-change='toggle($index,item.state)', ng-model='item.state')
-			span(ng-bind='item.title')
+			label.cleargap
+				input.ibox(type='checkbox', ng-checked='item.state', ng-change='toggle($index,item.state)', ng-model='item.state')
+				span.ibox(ng-bind='item.title')
 		td
 			span(ng-repeat='data in item.recommend', ng-bind="data+' '")
 			span(ng-if='item.recommend.length==0') 否
 		td(ng-bind="item.isActive ? '是' : '否' ")
 		td(ng-bind="item.published | date:'yyyy-MM-dd' ")
 		td
-			a(href='javascript:;', ng-click='deleteByID(item._id)') 删除
+			a.delete(href='javascript:;', ng-click='deleteByID(item._id)') 删除
 			a(href='javascript:;', ng-click='modifyByID(item._id)') 修改
 paging(page="pageConfig.page",page-size="pageConfig.pageSize",total="pageConfig.total",dots="...",show-prev-next="true",show-first-last="true",paging-action="pagination(page)",text-first="首页",text-last="尾页",text-next="下一页",text-prev="上一页")
 
