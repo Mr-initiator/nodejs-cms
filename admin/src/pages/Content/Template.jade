@@ -25,6 +25,80 @@ table.article-list
 			td(ng-bind="item.published | date:'yyyy-MM-dd' ")
 			td
 				a.delete(href='javascript:;', ng-click='deleteByID(item._id,false)') 删除
-				a(href='javascript:;', ng-click='modifyByID(item._id)') 修改
+				a(ng-click="modifyByID(item._id)",href='{{"#fancybox-"+$state.params.model}}',fancybox) 修改
 paging(page="pageConfig.page",page-size="pageConfig.pageSize",total="pageConfig.total",dots="...",show-prev-next="true",show-first-last="true",paging-action="pagination(page)",text-first="首页",text-last="尾页",text-next="下一页",text-prev="上一页")
 .user-tip(ng-if='articleList.docs.length==0') 暂无数据
+a#article-trigger(href="#fancybox-article",fancybox)
+
+.fancybox-container#fancybox-article(style="display:none")
+	form.form-horizontal(method="post")
+		.form-group
+			label.col-sm-1.control-label.f13 标题
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入标题',autocomplete="off",ng-model="articleModel.title")
+		.form-group
+			label.col-sm-1.control-label.f13 当前语言
+			.col-sm-11
+				input.form-control(type='text',disabled="disabled",autocomplete="off",ng-model="articleModel.language")
+		.form-group
+			label.col-sm-1.control-label.f13 是否推荐
+			.col-sm-11 
+				label.checkbox-inline
+					input(type='checkbox',autocomplete="off",ng-click="updateCommand($event,'网站首页')",value="网站首页")
+					| 网站首页
+				label.checkbox-inline
+					input(type='checkbox',autocomplete="off",ng-click="updateCommand($event,'栏目首页')",value="栏目首页")
+					| 栏目首页
+				label.checkbox-inline
+					input(type='checkbox',autocomplete="off",ng-click="updateCommand($event,'类别首页')",value="类别首页")
+					| 类别首页
+		.form-group
+			label.col-sm-1.control-label.f13 是否激活
+			.col-sm-11 
+				label.checkbox-inline
+					input(type='checkbox',autocomplete="off",ng-model="articleModel.isActive",ng-value="articleModel.isActive")
+		.form-group
+			label.col-sm-1.control-label.f13 点击量
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入点击量',autocomplete="off",ng-model="articleModel.clickVolume")
+		.form-group
+			label.col-sm-1.control-label.f13 强制URL
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入强制URL',autocomplete="off",ng-model="articleModel.forceUrl")
+		.form-group
+			label.col-sm-1.control-label.f13 文章封面
+			.col-sm-11
+				.uploadImageWaper
+					img.uploadImage(ng-src="{{SERVER_PATH}}{{articleModel.articleCover}}",image-scale="best-fit-down")
+				input.uploadInp(type='file',uploader="uploader",nv-file-select="")
+				input.uploadInpBtn(type="button",ng-click="uploader.uploadAll()",value="上传")
+		.form-group
+			label.col-sm-1.control-label.f13 发布日期
+			.col-sm-11
+				input.form-control(type='date',placeholder='请选择日期',autocomplete="off",ng-model="articleModel.published")
+		.form-group
+			label.col-sm-1.control-label.f13 简介
+			.col-sm-11
+				#article-ins.wangEditor
+		.form-group
+			label.col-sm-1.control-label.f13 内容
+			.col-sm-11
+				#article-con.wangEditor
+		.form-group
+			label.col-sm-1.control-label.f13 标题
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入网页标题',autocomplete="off",ng-model="articleModel.pagetitle")
+		.form-group
+			label.col-sm-1.control-label.f13 关键字
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入网页关键字',autocomplete="off",ng-model="articleModel.pagekeywords")
+		.form-group
+			label.col-sm-1.control-label.f13 描述
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入网页描述',autocomplete="off",ng-model="articleModel.pagedescription")
+		.form-group
+			label.col-sm-1.control-label
+			.col-sm-11
+				button.btn.btn-primary(ng-click="addArticle()",ng-show="!sign.isModify") 提交
+				button.btn.btn-primary(ng-click="sendModifyArticle(sign.modifyID)",ng-show="sign.isModify") 修改
+				button.btn.btn-danger.ml(ng-click="resizeArticle()") 重置

@@ -9,15 +9,11 @@ export default angular.module('ContentService',[])
 			addArticle(formData,Token){
 
 				// 发送请求
-				$http({
+				return $http({
 					method:'post',
 					url : `${SERVER_PATH}article/addArticle`,
 					data : formData,
 					params : { Token }
-				}).then(response=>{
-					// 向外广播
-					$rootScope.$broadcast('addArticle.Updated',response);
-
 				})
 
 			},

@@ -3,6 +3,7 @@ export default angular.module('globalConfig',[])
 
 		$rootScope.SERVER_PATH = 'http://localhost:3000/';
 		$rootScope.LOCAL_PATH = 'http://localhost:8090/';
+		$rootScope.$state = $state;
 
 		return {
 

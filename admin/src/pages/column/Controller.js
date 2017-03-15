@@ -20,6 +20,7 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 	// 初始化编辑器
 	let EdtorModule = initEditor();
 
+	// 区分是添加还是修改
 	$scope.sign = { isModify : false,modifyID : 0 };
 
 	// 表单字段
