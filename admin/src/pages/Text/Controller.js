@@ -26,6 +26,9 @@ export default function Controller($scope,$state,$stateParams,TextSer,CommonJs,F
 	// 批量删除
 	$scope.deleteMany = deleteMany;
 
+	// 根据ID删除文章
+	$scope.deleteByID = deleteByID;
+
 	// 单个文章切换状态
 	$scope.toggle = toggle;
 
@@ -229,9 +232,9 @@ export default function Controller($scope,$state,$stateParams,TextSer,CommonJs,F
 
 		});
 
-		
-
 	}
+
+
 
 	// 文章列表分页
 	function pagination(page){
@@ -249,6 +252,64 @@ export default function Controller($scope,$state,$stateParams,TextSer,CommonJs,F
 		$scope.key = '';
 
 		getArticleList();
+
+	}
+
+	// 根据ID删除文章
+	function deleteByID(ID,flag){
+
+		if(!ID){
+
+			swal("删除文章的ID不能为空",response.message,"error");
+
+			return;
+		}
+
+		// flag true 为批量删除 false 为单个删除
+
+		if(flag){
+
+			sendDelete(ID);
+
+		}else{
+
+			swal({
+				title:"您确定要删除吗?",
+				text: "删除后不可恢复!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText:"确定",
+				cancelButtonText:'取消',
+				closeOnConfirm: false
+			},function(){
+
+				sendDelete(ID);
+
+			});
+
+		}
+
+	}
+
+	// 发送删除请求
+	function sendDelete(ID){
+
+		// 发送删除请求
+		TextSer.deleteByID(ID,Token).then(response=>{
+
+	    	var response = response.data;
+
+	    	// 检查令牌是否失效
+	    	if(CommonJs.checkRequestCode(response.code)) return;
+
+	    	// 获取文章列表
+	    	if(!response.code) getArticleList();
+
+	    	// 用户提示
+	    	swal(response.message,'');
+
+	    });
 
 	}
 
