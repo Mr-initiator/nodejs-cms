@@ -91,6 +91,16 @@ export default angular.module('TextService',[])
 					params:params
 				});
 
+			},
+			// 根据栏目ID获取栏目模型
+			getModelByCID(Token,id){
+
+				return $http({
+					method:'get',
+					url:`${SERVER_PATH}column/getModelByCID`,
+					params : { Token,id }
+				});
+
 			}
 
 		}

@@ -37,6 +37,9 @@ exports.start = function(app){
 
 	// 获取栏目总数
 	app.get('/column/getCount',[jwtauth],column.getCount);
+
+	// 根据栏目ID获取栏目模型
+	app.get('/column/getModelByCID',[jwtauth],column.getModelByCID)
 	
 	// 图片上传
 	app.post('/fileUpload',common.imageUpload);

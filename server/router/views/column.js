@@ -156,3 +156,25 @@ exports.getCount = function(req,res){
 	})
 
 }
+
+// 根据栏目ID获取栏目模型
+exports.getModelByCID = function(req,res){
+
+	var id = req.query.id;
+
+	if(!id){
+
+		res.json({code:1,message:'栏目ID不能为空'});
+
+		return;
+	}
+
+	columnModel.findOne({_id:id}).select('model').exec(function(err,doc){
+	
+		err ? res.json({code:2,message:'栏目模型获取失败',result:null}) : res.json({code:0,message:'栏目模型获取成功',result:doc})
+
+	})
+
+}
+
+

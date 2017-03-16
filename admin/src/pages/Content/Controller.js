@@ -14,6 +14,7 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 	// 栏目模型
 	var model = $stateParams.model;
 
+	// 文章模型弹出按钮
 	var articleTrigger = $('#article-trigger');
 
 	// 分页
