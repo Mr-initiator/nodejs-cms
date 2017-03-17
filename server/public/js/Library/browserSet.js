@@ -1,0 +1,3 @@
+//加入收藏 browserSet.addFavorite(window.location,document.title);
+//设为首页 browserSet.SetHome(window.location);
+define(function(a,b,c){var d={};d.addFavorite=function(a,b){a=encodeURI(a);try{window.external.addFavorite(a,b)}catch(c){try{window.sidebar.addPanel(b,a,"")}catch(c){alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.")}}},d.SetHome=function(a){document.all?(document.body.style.behavior="url(#default#homepage)",document.body.setHomePage(a)):alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!")},c.exports=d});

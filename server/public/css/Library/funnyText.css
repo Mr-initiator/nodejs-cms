@@ -1,0 +1,40 @@
+.charWrap {
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    position:relative;
+    overflow: hidden;
+}
+.funnyText span.left, 
+.funnyText span.right,
+.funnyText span.top,
+.funnyText span.bottom {
+    position:absolute;
+}
+.funnyText .charWrap {
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;/** Chrome & Safari **/
+    -moz-transition: all 0.4s ease-in-out;/** Firefox **/
+    -o-transition: all 0.4s ease-in-out;/** Opera **/
+}
+.funnyText .charWrap .top {
+    top:0;
+}
+.funnyText .charWrap .left {
+    left:0;
+}
+.funnyText .charWrap .right {
+    right:0;
+}
+.funnyText .charWrap .bottom {
+    bottom:0;
+}
+.funnyText .character {
+    position:relative;
+    zoom:1;
+    overflow:hidden;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    left:0;top:0;
+}

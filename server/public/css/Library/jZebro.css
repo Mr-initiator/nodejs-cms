@@ -1,0 +1,54 @@
+/* DEFAULT style for jZebro jQuery plugin */
+
+/* <TH> style */
+
+.thFont { 
+	font-family: Verdana; 
+}
+.thSize { 
+	font-size: 14px; 
+}
+.thColor {
+	color: #FFF;
+}
+.thBg {
+	background-color: #333;
+}
+.thPadding {
+	padding: 3px 7px;
+}
+
+/* <TD> style */
+
+.tdFont { 
+	font-family: Verdana; 
+}
+.tdSize { 
+	font-size: 13px; 
+}
+.tdColor {
+	color: #777;
+}
+.tdPadding {
+	padding: 2px 5px;
+}
+
+/* <TR> :EVEN style */
+
+.trEven {
+	background-color: #CCC;
+}
+.trEven:hover td {
+	background-color: #999;
+	color: #FFF;
+}
+
+/* <TR> :ODD style */
+
+.trOdd {
+	background-color: #EEE;
+}
+.trOdd:hover td {
+	background-color: #999;
+	color: #FFF;
+}

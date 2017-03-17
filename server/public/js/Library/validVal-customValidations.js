@@ -1,0 +1,1 @@
+﻿define(function(a){var d=jQuery=a("jquery");a("validVal"),d.fn.validVal.customValidations={nl_postalcode:function(a){var b=a.split(" ").join("");return 0==b.length?!0:6!=b.length||isNaN(b.charAt(0))||isNaN(b.charAt(1))||isNaN(b.charAt(2))||isNaN(b.charAt(3))||!isNaN(b.charAt(4))||!isNaN(b.charAt(5))?!1:!0}}});

@@ -1,0 +1,4 @@
+// HTML <div id="container" points="116.417816,39.914393" site="地点名称"></div>
+// 调用 makeMap.maps($('#map').attr('id'), $('#map').attr('points').split(','), $('#map').attr('site'));*/
+// 引用 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6a7bbfba409e760b2c8dd04eaa004c7b"></script>
+define(function(a,b,c){var d,e={};e.maps=function(a,b,c){var e,f,g,h;d=new BMap.Map(a),e=new BMap.Point(b[0],b[1]),d.centerAndZoom(e,15),d.addControl(new BMap.NavigationControl),d.enableScrollWheelZoom(),f=new BMap.Marker(e),d.addOverlay(f),g={position:e,offset:new BMap.Size(0,-50)},h=new BMap.Label(c,g),h.setStyle({color:"black",padding:"0 5px",fontSize:"12px",height:"20px",lineHeight:"20px",fontFamily:"微软雅黑"}),d.addOverlay(h)},c.exports=e});
