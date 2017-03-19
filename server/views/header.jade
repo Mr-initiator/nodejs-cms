@@ -5,15 +5,8 @@
 				| {{ Front Developer }}
 			ul.navigation.clearfix.pra
 				li
-					a.top-level(href='#') 首页
-				li
-					a.top-level(href='#') 前端开发
-				li
-					a.top-level(href='#') JavaScript
-				li
-					a.top-level(href='#') jQuery
-				li
-					a.top-level(href='#') AngularJs
+					each item in navigation
+						a.top-level(href='#{item.link}?name=#{item._id}') #{item.title}
 			a#search-button.search-button.iconfont.icon-search.pra(href='javascript:;')
 			a#hamburger(href='#my-menu')
 				span

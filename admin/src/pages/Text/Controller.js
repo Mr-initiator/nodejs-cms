@@ -127,6 +127,7 @@ export default function Controller($scope,$state,$stateParams,TextSer,CommonJs,F
 		'isActive' : true,
 		'recommend' : [],
 		'columnID' : '',
+		'columnName' : '',
 		'clickVolume' : '',
 		'forceUrl' : '',
 		'articleCover' : 'images/image.jpg',
@@ -221,6 +222,18 @@ export default function Controller($scope,$state,$stateParams,TextSer,CommonJs,F
 
 		// 获取栏目内容
 		$scope.articleModel.articleContent = EdtorModule.articleCon.$txt.html();
+
+		// 筛选网站公告名称
+		angular.forEach($scope.allColumns,function(value){
+
+			if(value._id == $scope.articleModel.columnID){
+
+				$scope.articleModel.columnName = value.title;
+
+			}
+
+		});
+		
 
 		if(!$.trim($scope.articleModel.title)){
 

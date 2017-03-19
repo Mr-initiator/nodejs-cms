@@ -6,6 +6,7 @@ var columnSchema = new mongoose.Schema({
 	parent        : {type:String,default:'none'},
 	title         : {type:String,required:true},
 	alias         : String,
+	link 	      : String,
 	language      : {type:String,required:true,default:'ch'},
 	model         : String,
 	columnIndex   : String,

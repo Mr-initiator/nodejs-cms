@@ -12,7 +12,7 @@ script#recursion(type='text/ng-template').
 		</div>
 		<div class="curd common fr">
 			<a class="operation" href="{{item.route}}" target="_blank" ng-if="item.route">预览</a>
-			<a class="operation" ui-sref="major.content({id:item._id,model:item.model})">内容管理</a>
+			<a class="operation" ui-sref="major.content({id:item._id,model:item.model,title:item.title})">内容管理</a>
 			<div fancybox class="operation" href="#fancybox-column" ng-click="addChildColumn(item._id)">增加子栏目</div>
 			<div fancybox class="operation" href="#fancybox-column" ng-click="modifyfancy(item._id)">修改</div>
 			<a class="operation" href="javascript:;" ng-click="deleteColumn(item._id)">删除</a>
@@ -36,6 +36,10 @@ script#recursion(type='text/ng-template').
 			label.col-sm-1.control-label.f13 栏目别名
 			.col-sm-11
 				input.form-control(type='text',placeholder='请输入栏目别名',autocomplete="off",ng-model="formData.alias")
+		.form-group
+			label.col-sm-1.control-label.f13 栏目链接
+			.col-sm-11
+				input.form-control(type='text',placeholder='请输入栏目链接',autocomplete="off",ng-model="formData.link")
 		.form-group
 			label.col-sm-1.control-label.f13 当前语言
 			.col-sm-11
@@ -78,7 +82,7 @@ script#recursion(type='text/ng-template').
 					option(value='2') 链接到第一个子栏目
 					option(value='3') 不可链接
 		.form-group
-			label.col-sm-1.control-label.f13 是否激活
+			label.col-sm-1.control-label.f13 主导航
 			.col-sm-11
 				label.radio-inline
 					input(type='radio',value='true',name='switch',ng-model="formData.switch",ng-checked='true')

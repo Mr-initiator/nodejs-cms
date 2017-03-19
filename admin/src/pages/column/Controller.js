@@ -28,6 +28,7 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 		parent : 'none',
 		title : '',
 		alias : '',
+		link : '',
 		language : 'ch',
 		model : 'article',
 		columnIndex : '',

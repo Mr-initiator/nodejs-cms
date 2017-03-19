@@ -2,21 +2,10 @@
 	.section
 		h5 网站公告
 		ul.section-list
-			li
-				span.fr 2017-10-15
-				a(href='#') 315·租房篇｜怎样越过中介，租到真实个人房源？
-			li
-				span.fr 2017-10-15
-				a(href='#') 315·租房篇｜怎样越过中介，租到真实个人房源？
-			li
-				span.fr 2017-10-15
-				a(href='#') 315·租房篇｜怎样越过中介，租到真实个人房源？
-			li
-				span.fr 2017-10-15
-				a(href='#') 315·租房篇｜怎样越过中介，租到真实个人房源？
-			li
-				span.fr 2017-10-15
-				a(href='#') 315·租房篇｜怎样越过中介，租到真实个人房源？
+			each item in notice
+				li 
+					span.fr #{moment(item.published).format("YYYY-MM-DD")}
+					a(href='/article?id=#{item._id}') #{item.title}
 	.Hematemesis
 		h4.ibox 强烈推荐
 		h2.comand-title

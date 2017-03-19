@@ -12,6 +12,9 @@ var config = require('./config.js');
 // 实例化express 获取app
 var app = express();
 
+// 将日期格式化方法挂载到全局
+app.locals.moment = require('moment');
+
 // 设置全局配置变量
 global.config = {};
 

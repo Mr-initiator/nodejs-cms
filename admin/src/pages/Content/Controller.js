@@ -14,6 +14,9 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 	// 栏目模型
 	var model = $stateParams.model;
 
+	// 栏目名称
+	var cname = $stateParams.title;
+
 	// 文章模型弹出按钮
 	var articleTrigger = $('#article-trigger');
 
@@ -83,6 +86,7 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 		'isActive' : true,
 		'recommend' : [],
 		'columnID' : cid,
+		'columnName' : cname,
 		'clickVolume' : '',
 		'forceUrl' : '',
 		'articleCover' : 'images/image.jpg',

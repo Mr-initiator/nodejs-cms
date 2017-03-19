@@ -11,6 +11,7 @@ var articleSchema = new Schema({
 	recommend       : Array,
 	isActive        : Boolean,
 	clickVolume     : String,
+	columnName		: String,
 	forceUrl        : String,
 	articleCover    : String,
 	published       : {type:Date,default:Date.now},
