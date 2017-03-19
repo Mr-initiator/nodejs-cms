@@ -13,6 +13,7 @@ export default function Controller($scope,$state,SettingSer,CommonJs,FileUploade
 		rootDir : '',
 		webTitle : '',
 		webLogo : '',
+		WordLogo : '',
 		description : '',
 		keywords : '',
 		copyright : '',

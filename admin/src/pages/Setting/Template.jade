@@ -8,13 +8,16 @@ form.form-horizontal(method="post")
 		.col-sm-11
 			input.form-control(type='text',placeholder='请输入网站名称',autocomplete="off",ng-model="formData.webTitle")
 	.form-group
-		label.col-sm-1.control-label.f13 网站LOGO
+		label.col-sm-1.control-label.f13 图片LOGO
 		.col-sm-11
 			.uploadImageWaper
 				img.uploadImage(ng-src="{{SERVER_PATH}}{{formData.webLogo}}",image-scale="best-fit-down")
 			input.uploadInp(type='file',uploader="uploader",nv-file-select="")
 			input.uploadInpBtn(type="button",ng-click="uploader.uploadAll()",value="上传")
-
+	.form-group
+		label.col-sm-1.control-label.f13 文字LOGO
+		.col-sm-11
+			input.form-control(type='text',placeholder='文字版logo',autocomplete="off",ng-model="formData.WordLogo")
 	.form-group
 		label.col-sm-1.control-label.f13 网站描述
 		.col-sm-11

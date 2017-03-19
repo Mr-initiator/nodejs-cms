@@ -5,9 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var jwt = require('jwt-simple');
+var adminUI = require('./adminUI');
 var router = require('./router');
 var config = require('./config.js');
 
+// 实例化express 获取app
 var app = express();
 
 // 设置全局配置变量
@@ -48,31 +50,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 上传文件目录
 app.use('/uploads',express.static('./uploads'));
 
+// adminUI API
+adminUI.start(app);
 
+// FrontUI router
 router.start(app);
-
-
-/*// 设置404
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// 错误信息
-app.use(function(err, req, res, next) {
-
-  // 设置locals变量,仅在开发环境中提供
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // 渲染404页面
-  res.status(err.status || 500);
-
-  res.render('error');
-  
-});*/
-
 
 
 module.exports = app;
