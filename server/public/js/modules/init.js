@@ -7,7 +7,6 @@ define(function(require,exports,module){
 	require('lazyloadxt');
 	require('scrolltofixed');
 	require('device');
-	require('../../css/Library/mmenu.all.css');
 
 	require.async('mmenu',function(){
 		$("#my-menu").mmenu({

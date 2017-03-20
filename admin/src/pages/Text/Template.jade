@@ -69,6 +69,10 @@ a#article-trigger(href="#fancybox-article",fancybox)
 				label.checkbox-inline
 					input(type='checkbox',autocomplete="off",ng-model="articleModel.isActive",ng-value="articleModel.isActive")
 		.form-group
+					label.col-sm-1.control-label.f13 作者
+					.col-sm-11
+						input.form-control(type='text',placeholder='请输入作者',autocomplete="off",ng-model="articleModel.author")
+		.form-group
 			label.col-sm-1.control-label.f13 点击量
 			.col-sm-11
 				input.form-control(type='text',placeholder='请输入点击量',autocomplete="off",ng-model="articleModel.clickVolume")

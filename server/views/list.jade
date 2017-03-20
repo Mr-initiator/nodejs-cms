@@ -1,0 +1,48 @@
+extends layout
+
+block content
+	include header.jade
+	.container.w1200.clearfix
+		.main.fl
+			h3.page-title #{columnName}
+			ul.article-list
+				each item in list.docs
+					li
+						a.img-box.prz.fl
+							img.best-fill(data-src='#{item.articleCover}')
+						.list-content
+							h5
+								a(href='/article?id=#{item._id}') #{item.title}
+							.meta
+								span.time.iconfont.icon-time
+									| #{moment(item.published).format("YYYY-MM-DD")}
+								span.author.iconfont.icon-author
+									| #{item.author}
+								span.count.iconfont.icon-read
+									| 阅读(#{item.clickVolume})
+								a.iconfont.icon-comment.fr(href='#')
+									| 评论(10)
+							.instro !{item.articleBrief}
+			//- .page.cleargap
+			//- 	a.ibox.prev(href='#') 上一页
+			//- 	a.ibox.number.active(href='#') 1
+			//- 	a.ibox.number(href='#') 2
+			//- 	a.ibox.number(href='#') 3
+			//- 	a.ibox.number(href='#') 4
+			//- 	a.ibox.number(href='#') 5
+			//- 	a.ibox.next(href='#') 下一页
+			//- 	a.ibox.total(href='javascript:;') 共#{command.pages}页
+		include sideBar.jade
+	include footer.jade
+	script.
+		seajs.use(['init'],function(){
+			
+			if(device.desktop()){
+
+				var tagCloud = $('#tag-cloud');
+
+				tagCloud.scrollToFixed({marginTop:70});
+
+			}
+			
+		});

@@ -87,6 +87,7 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 		'recommend' : [],
 		'columnID' : cid,
 		'columnName' : cname,
+		'author' : '',
 		'clickVolume' : '',
 		'forceUrl' : '',
 		'articleCover' : 'images/image.jpg',

@@ -1,8 +1,8 @@
 .sideBar.fr
 	.section
-		h5 网站公告
+		h5 最新文章
 		ul.section-list
-			each item in notice
+			each item in lasted
 				li 
 					span.fr #{moment(item.published).format("YYYY-MM-DD")}
 					a(href='/article?id=#{item._id}') #{item.title}

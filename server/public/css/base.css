@@ -128,11 +128,13 @@ a,button,input[type="button"],input[type="submit"]{cursor:url(../images/link.cur
 .article-list .img-box{display:block;width:220px;height:150px;overflow:hidden;}
 .article-list .list-content{margin-left:240px;}
 .article-list h5{padding-bottom:18px;}
-.article-list h5 a:first-child{color:#fff;background-color:#45BCF9;padding:3px 6px;position:relative;zoom:1;font-size:12px;}
-.article-list h5 a:last-child{font-size:18px;padding-left:6px;font-weight:bold;}
+.article-list h5 a.divide{color:#fff;background-color:#45BCF9;padding:3px 6px;position:relative;zoom:1;font-size:12px;}
+.article-list h5 a.atitle{font-size:18px;padding-left:6px;font-weight:bold;}
 .article-list h5 i{position:absolute;top:50%;margin-top:-4px;right:-4px;width:0;height:0;border-left:4px solid #45BCF9;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .article-list .meta{overflow:hidden;padding-bottom:8px;}
-.article-list .meta span{font-size:12px;padding-right:6px;color:#999;}
+.article-list .meta span{font-size:12px;padding-right:12px;color:#999;}
+.article-list .meta span:before,
+.article-list .meta a:before{margin-right:3px;font-size:13px;}
 .article-list .meta a{font-size:12px;color:#999;}
 .article-list .instro{color:#999;line-height:20px;}
 

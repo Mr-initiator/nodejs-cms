@@ -1,12 +1,11 @@
 #fix-header.fix-header.prz
 	.header.prz
 		.w1200.prz
-			a.logo.pra(href='#')
-				| {{ Front Developer }}
+			a.logo.pra(href='#{settings.rootDir}') #{settings.WordLogo}
 			ul.navigation.clearfix.pra
 				li
 					each item in navigation
-						a.top-level(href='#{item.link}?name=#{item._id}') #{item.title}
+						a.top-level(href='#{item.link}?id=#{item._id}&name=#{item.title}') #{item.title}
 			a#search-button.search-button.iconfont.icon-search.pra(href='javascript:;')
 			a#hamburger(href='#my-menu')
 				span

@@ -2,7 +2,7 @@
 var articleModel = require('../models/article.js');
 
 // 根据栏目名称获取文章列表
-module.exports = function(config,callback){
+module.exports = (config,callback)=>{
 
 	var page = Number(config.page) || 1,
 		limit = Number(config.limit) || 10,

@@ -1,0 +1,99 @@
+extends layout
+
+block content
+	include header.jade
+	.container.w1200.clearfix
+		.article.fl
+			.article-title
+				h1 #{article.title}
+			.article-base.cleargap
+				span.ibox #{moment(article.published).format('YYYY-MM-DD')}
+				span.ibox
+					| 分类：
+					a(href='#') #{article.columnName}
+				span.ibox 阅读(#{article.clickVolume})
+				span.ibox 评论(0)
+			.edits !{article.articleContent}
+				
+			.article-share
+				.bdsharebuttonbox
+					a.bds_more(href='#', data-cmd='more')
+					a.bds_qzone(href='#', data-cmd='qzone', title='分享到QQ空间')
+					a.bds_tsina(href='#', data-cmd='tsina', title='分享到新浪微博')
+					a.bds_sqq(href='#', data-cmd='sqq', title='分享到QQ好友')
+					a.bds_tqq(href='#', data-cmd='tqq', title='分享到腾讯微博')
+					a.bds_renren(href='#', data-cmd='renren', title='分享到人人网')
+					a.bds_weixin(href='#', data-cmd='weixin', title='分享到微信')
+					a.bds_mogujie(href='#', data-cmd='mogujie', title='分享到蘑菇街')
+					a.bds_kaixin001(href='#', data-cmd='kaixin001', title='分享到开心网')
+					a.bds_bdysc(href='#', data-cmd='bdysc', title='分享到百度云收藏')
+					a.bds_sdo(href='#', data-cmd='sdo', title='分享到麦库记事')
+					a.bds_people(href='#', data-cmd='people', title='分享到人民微博')
+					a.bds_linkedin(href='#', data-cmd='linkedin', title='分享到linkedin')
+					a.bds_twi(href='#', data-cmd='twi', title='分享到Twitter')
+					a.bds_h163(href='#', data-cmd='h163', title='分享到网易热')
+					a.bds_meilishuo(href='#', data-cmd='meilishuo', title='分享到美丽说')
+					a.bds_douban(href='#', data-cmd='douban', title='分享到豆瓣网')
+					a.bds_duitang(href='#', data-cmd='duitang', title='分享到堆糖')
+					a.bds_hx(href='#', data-cmd='hx', title='分享到和讯')
+					a.bds_evernotecn(href='#', data-cmd='evernotecn', title='分享到印象笔记')
+					a.bds_print(href='#', data-cmd='print', title='分享到打印')
+					a.bds_thx(href='#', data-cmd='thx', title='分享到和讯微博')
+				script.
+					window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+			h4.section-title 相关推荐
+			ul.command-list
+				li
+					a.title(href='#') 4名中国人欲偷渡美国被查扣 藏汽车后备箱
+				li
+					a.title(href='#') 大盘短线风险再度临近_老乐说股
+				li
+					a.title(href='#') 这一轮楼市调控还将持续半年？政策或仍将密集降临
+				li
+					a.title(href='#') 一拳超人里，英雄和怪人的实力如何排行？
+			h4.section-title 评论
+			.comment
+				.items
+					.head-image.prz.fl
+						img.best-fill(data-src='images/heads/head-3.png')
+					.comment-commit.prz
+						.text-waper
+							textarea(placeholder='老夫见你骨骼惊奇并非凡人。将来必成大器。不如这样，你给我留个言。解除对我的封印，待我恢复法力。我们一同拯救世界如何？')
+						a.submit.pra(href='javascript:;') 解除封印
+				.items
+					input.comment-text(type='text', placeholder='昵称')
+				.items
+					input.comment-text(type='text', placeholder='邮箱')
+			ul.comment-list
+				li
+					.head-image.fl
+						img.best-fill(data-src='images/heads/head-1.png')
+					.comment-content
+						.nick-name
+							| 昌平周杰伦
+							span.time 2017-06-06
+						.content
+							| 今天好天气啊
+				li
+					.head-image.fl
+						img.best-fill(data-src='images/heads/head-4.png')
+					.comment-content
+						.nick-name
+							| 燕郊林志玲
+							span.time 2017-06-06
+						.content
+							| 大王叫我来巡山
+		include sideBar.jade
+	include footer.jade
+	script.
+		seajs.use(['init'],function(){
+			
+			if(device.desktop()){
+
+				var tagCloud = $('#tag-cloud');
+
+				tagCloud.scrollToFixed({marginTop:70});
+
+			}
+
+		});
