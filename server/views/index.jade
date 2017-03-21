@@ -29,7 +29,7 @@ block content
 							img.best-fill(data-src='#{item.articleCover}')
 						.list-content
 							h5
-								a.divide(href='/list?id=#{item.columnID}&name=#{item.columnName}')
+								a.divide(href='/list?name=#{item.columnName}&language=#{language}')
 									| #{item.columnName}
 									i
 								a.atitle(href='/article?id=#{item._id}') #{item.title}
@@ -44,14 +44,11 @@ block content
 									| 评论(10)
 							.instro !{item.articleBrief}
 			.page.cleargap
-				a.ibox.prev(href='#') 上一页
-				a.ibox.number.active(href='#') 1
-				a.ibox.number(href='#') 2
-				a.ibox.number(href='#') 3
-				a.ibox.number(href='#') 4
-				a.ibox.number(href='#') 5
-				a.ibox.next(href='#') 下一页
-				a.ibox.total(href='javascript:;') 共#{command.pages}页
+				if command.page-1 >=1
+					a.ibox.prev(href='/?page=#{command.page-1}&language=#{language}') 上一页
+				if command.page+1 <= command.pages
+					a.ibox.next(href='/?page=#{command.page+1}&language=#{language}') 下一页
+				a.ibox.total(href='javascript:;') 共#{command.pages}页 当前第#{command.page}页
 		include sideBar.jade
 	include footer.jade
 	script.

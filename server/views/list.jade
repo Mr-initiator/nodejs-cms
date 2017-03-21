@@ -23,15 +23,12 @@ block content
 								a.iconfont.icon-comment.fr(href='#')
 									| 评论(10)
 							.instro !{item.articleBrief}
-			//- .page.cleargap
-			//- 	a.ibox.prev(href='#') 上一页
-			//- 	a.ibox.number.active(href='#') 1
-			//- 	a.ibox.number(href='#') 2
-			//- 	a.ibox.number(href='#') 3
-			//- 	a.ibox.number(href='#') 4
-			//- 	a.ibox.number(href='#') 5
-			//- 	a.ibox.next(href='#') 下一页
-			//- 	a.ibox.total(href='javascript:;') 共#{command.pages}页
+			.page.cleargap
+				if list.page-1 >=1
+					a.ibox.prev(href='/list?name=#{columnName}&page=#{list.page-1}&language=#{language}') 上一页
+				if list.page+1 <= list.pages
+					a.ibox.next(href='/list?name=#{columnName}&page=#{list.page+1}&language=#{language}') 下一页
+				a.ibox.total(href='javascript:;') 共#{list.pages}页 当前第#{list.page}页
 		include sideBar.jade
 	include footer.jade
 	script.
