@@ -77,7 +77,7 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 	// 获取栏目数量
 	function GetColumnCount(language){
 
-		IndexSer.GetColumnCount(Token,language).then(response=>{
+		IndexSer.GetColumnCount(Token,language.lang_field).then(response=>{
 
 			var response = response.data;
 
@@ -88,6 +88,8 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 			
 			$scope.columnCount = response.result;
 
+
+
 		});
 
 	}
@@ -95,7 +97,7 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 	// 获取文章数量
 	function GetArticleCount(language){
 
-		IndexSer.GetArticleCount(Token,language).then(response=>{
+		IndexSer.GetArticleCount(Token,language.lang_field).then(response=>{
 
 			var response = response.data;
 
@@ -113,7 +115,7 @@ export default function Controller($scope,$state,IndexSer,CommonJs){
 	// 获取最新文档
 	function GetLastedArticle(language){
 
-		IndexSer.getLastedArticle({Token,language,limit:10}).then(response=>{
+		IndexSer.getLastedArticle({Token,language:language.lang_field,limit:10}).then(response=>{
 
 			var response = response.data;
 
