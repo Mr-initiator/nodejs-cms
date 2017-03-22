@@ -53,7 +53,7 @@ a,button,input[type="button"],input[type="submit"]{cursor:url(../images/link.cur
 .nobg{background:none!important;}
 .edits li{list-style-type:disc;list-style-position:inside;}
 .w1200{width:1200px;margin:0 auto;text-align:left;height:100%;}
-
+body{overflow-x:hidden;}
 @font-face {font-family: "iconfont";
   src: url('font/iconfont.eot?t=1489637888962');
   src: url('font/iconfont.eot?t=1489637888962#iefix') format('embedded-opentype'),
