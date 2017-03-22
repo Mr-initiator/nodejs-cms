@@ -8,7 +8,7 @@ block content
 			ul.article-list
 				each item in list.docs
 					li
-						a.img-box.prz.fl
+						a.img-box.prz.fl(href='/article?id=#{item._id}')
 							img.best-fill(data-src='#{item.articleCover}')
 						.list-content
 							h5

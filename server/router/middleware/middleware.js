@@ -76,7 +76,7 @@ module.exports = app=>{
 
 		var language = app.locals.language;
 
-		articleModel.find({language}).sort('-published').select('title published').limit(5).exec(function(err,result){
+		articleModel.find({language,recommend:'普通文章'}).sort('-published').select('title published').limit(5).exec(function(err,result){
 
 			if(err){
 

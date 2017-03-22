@@ -7,6 +7,7 @@
 seajs.config({
   alias:{
     'init':'modules/init',
+    'article':'modules/article',
     'jquery':'Library/jquery-1.11.1.min',
     'easing':'Library/easing',
     'imageScale':'Library/imageScale',

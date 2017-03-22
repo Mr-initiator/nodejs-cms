@@ -15,7 +15,7 @@ langModel.count({},(err,result)=>{
 	if(!result){
 
 		// 添加默认语言
-		langModel.create({lang_name:'中文',lang_field:'ch',isChecked:true},err=>{
+		langModel.create({lang_name:'中文',lang_field:'cn',isChecked:true},err=>{
 
 			err ? console.log('默认语言添加失败') : console.log('默认语言添加成功');
 

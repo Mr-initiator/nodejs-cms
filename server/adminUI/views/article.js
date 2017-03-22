@@ -17,7 +17,7 @@ exports.addArticle = function(req,res){
 		}
 
 
-		// 添加栏目
+		// 添加文章
 		articleModel.create(result,function(err,result){
 
 			// 向前台发送 栏目添加是否成功的信息

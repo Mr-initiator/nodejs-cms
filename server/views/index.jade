@@ -8,19 +8,17 @@ block content
 				a.carouse-btn.carouse-btn-1.iconfont.icon-left.pra(href='javascript:;')
 				a.carouse-btn.carouse-btn-2.iconfont.icon-right.pra(href='javascript:;')
 				ul#caroUl.caroUl
-					li
-						a.img-box(href='#')
-							img.best-fill(data-src='temp/temp.jpg')
-					li
-						a.img-box(href='#')
-							img.best-fill(data-src='temp/temp-1.jpg')
+					each item in Carousel
+						li
+							a.img-box(href='#{item.forceUrl}')
+								img.best-fill(data-src='#{item.articleCover}')
 				#pagination.pagination.cleargap.pra
 			.command
 				h5
-					a(href='#') 【推荐】
-					a(href='#') DNF：当前版本中扶不起来的5大职业大盘点，你还在坚持吗？
-				.instro
-					| 某些职业厉害得要上天，而有些职业，即使付出太多努力，依然掀不动下水道的井盖！一起盘点一下，DNF目前版本中扶不起来的五大职业！帅气的连招，摇晃的身影，一套喵喵拳连招hit999999，伤害999。
+					a(href='/textAds?name=#{textAds.columnName}&language=#{language}') 【推荐】
+					a(href='#{textAds.forceUrl}',target="_blank") #{textAds.title}
+				.instro !{textAds.articleBrief}
+					
 			h3.page-title 推荐文章
 			ul.article-list
 				each item in command.docs

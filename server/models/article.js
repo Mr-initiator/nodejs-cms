@@ -6,6 +6,14 @@ var Schema = mongoose.Schema;
 
 var db = require("./db.js");
 
+var commentSchema = new Schema({
+	applyContent : String,
+	nickName     : String,
+	email        : String,
+	parentID     : Schema.Types.Mixed,
+	published    : {type:Date,default:Date.now}
+});
+
 var articleSchema = new Schema({
 	title           : {type:String,required:true},
 	recommend       : Array,
@@ -22,7 +30,8 @@ var articleSchema = new Schema({
 	pagekeywords    : String,
 	pagedescription : String,
 	columnID        : Schema.Types.ObjectId,
-	language      : {type:String,required:true,default:'ch'},
+	language        : {type:String,required:true,default:'ch'},
+	comments 		: [commentSchema]
 });
 
 
