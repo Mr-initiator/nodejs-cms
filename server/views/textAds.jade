@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	include header.jade
+	div.container.w1200.clearfix
+		.main.fl
+			each item in list.docs
+				.command
+					h5
+						a(href='#{item.forceUrl}',target="_blank") #{item.title}
+					.instro !{item.articleBrief}
+			.page.cleargap
+				if list.page-1 >=1
+					a.ibox.prev(href='/?page=#{list.page-1}&language=#{language}') 上一页
+				if list.page+1 <= list.pages
+					a.ibox.next(href='/?page=#{list.page+1}&language=#{language}') 下一页
+				a.ibox.total(href='javascript:;') 共#{list.pages}页 当前第#{list.page}页
+		include sideBar.jade
+	include footer.jade
+	script.
+		seajs.use(['init'],function(){
+			
+			if(device.desktop()){
+
+				var tagCloud = $('#tag-cloud');
+				
+				tagCloud.scrollToFixed({marginTop:70});
+
+			}
+			
+		});

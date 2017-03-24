@@ -84,7 +84,7 @@ body{overflow-x:hidden;}
 .search .search-body{width:65%;height:40px;margin:20px auto 0 auto;border:1px solid #ddd;transition:border 0.3s;}
 .search .body-waper{left:10px;right:110px;height:40px;}
 .search .body-input{height:40px;line-height:40px;width:100%;font-size:14px;}
-.search .body-button{width:100px;height:40px;right:0;top:0;z-index:2;background:#45B6F7;}
+.search .body-button{width:100px;height:40px;right:0;top:0;z-index:2;background:#45B6F7;color:#FFF;}
 .search .body-button:before{color:#FFF;font-size:26px;font-weight:bold;display:block;text-align:center;padding-top:7px;}
 .navigation{right:30px;top:20px;}
 .navigation li{float:left;}
@@ -191,6 +191,7 @@ body{overflow-x:hidden;}
 .comment-list .nick-name .apply{padding-left:6px;cursor:url(../images/link.cur),pointer;opacity:0;filter:alpha(opacity=0);color:#45B6F7;transition:all 0.4s;}
 .comment-list .content{color:#bbb;line-height:18px;}
 .comment-list .comment-list{padding-left:48px;}
+.comment-list .comment-list .nick-name .apply{display:none!important;}
 .comment-list .comment-list li:first-child{padding-top:15px;}
 .comment-list .comment-list li:last-child{padding-bottom:0;}
 .comment-list .comment-list li{border-bottom:none;margin-bottom:0}
@@ -214,8 +215,8 @@ html.mm-opening #hamburger:after{top:20px;}
 html.mm-opening #hamburger span{left:-50px;opacity:0;}
 html.mm-opening #hamburger:before{transform:rotate(45deg);}
 html.mm-opening #hamburger:after{transform: rotate(-45deg);}
-
-
+.noresult{text-align:center;font-size:16px;padding:40px 0;}
+.container .main.search-content{float:none;display:block;width:100%;min-height:800px;}
 .hljs{display:block;overflow-x:auto;padding:0.5em;background:#23241f;border-radius:4px;}.hljs,.hljs-tag,.hljs-subst{color:#f8f8f2}.hljs-strong,.hljs-emphasis{color:#a8a8a2}.hljs-bullet,.hljs-quote,.hljs-number,.hljs-regexp,.hljs-literal,.hljs-link{color:#ae81ff}.hljs-code,.hljs-title,.hljs-section,.hljs-selector-class{color:#a6e22e}.hljs-strong{font-weight:bold}.hljs-emphasis{font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-name,.hljs-attr{color:#f92672}.hljs-symbol,.hljs-attribute{color:#66d9ef}.hljs-params,.hljs-class .hljs-title{color:#f8f8f2}.hljs-string,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-id,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-variable{color:#e6db74}.hljs-comment,.hljs-deletion,.hljs-meta{color:#75715e}
 
 /* media */

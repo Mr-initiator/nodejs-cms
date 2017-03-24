@@ -3,8 +3,10 @@ extends layout
 block content
 	include header.jade
 	.container.w1200.clearfix
-		.main.fl
-			h3.page-title #{columnName}
+		.main.fl.search-content
+			h3.page-title 搜索结果
+			if list.docs.length == 0
+				.noresult 没有搜索到您想要的内容
 			ul.article-list
 				each item in list.docs
 					li
@@ -29,17 +31,6 @@ block content
 				if list.page+1 <= list.pages
 					a.ibox.next(href='/list?name=#{columnName}&page=#{list.page+1}&language=#{language}') 下一页
 				a.ibox.total(href='javascript:;') 共#{list.pages}页 当前第#{list.page}页
-		include sideBar.jade
 	include footer.jade
 	script.
-		seajs.use(['init'],function(){
-			
-			if(device.desktop()){
-
-				var tagCloud = $('#tag-cloud');
-
-				tagCloud.scrollToFixed({marginTop:70});
-
-			}
-			
-		});
+		seajs.use('init');

@@ -10,9 +10,9 @@ block content
 				span.ibox #{moment(article.published).format('YYYY-MM-DD')}
 				span.ibox
 					| 分类：
-					a(href='#') #{article.columnName}
+					a(href='/list?name=#{article.columnName}') #{article.columnName}
 				span.ibox 阅读(#{article.clickVolume})
-				span.ibox 评论(0)
+				span.ibox 评论(#{article.comments.length})
 			.edits.wangEditor-container !{article.articleContent}
 				
 			.article-share

@@ -9,14 +9,18 @@ exports.start = app=>{
 
 	var article = require('./views/article.js')(app);
 
+	var textAds = require('./views/textAds.js')(app);
+
+	var search = require('./views/search.js')(app);
+
 	// 配置
 	app.all('*',middleware.GetSettings);
 
 	// 导航
-	app.get(['/','/list','/article'],middleware.GetNavigation);
+	app.get(['/','/list','/article','/textAds','/search'],middleware.GetNavigation);
 
 	// 获取最新文章
-	app.get(['/','/list','/article'],middleware.GetLastedArticle);
+	app.get(['/','/list','/article','/textAds'],middleware.GetLastedArticle);
 
 	// 首页 获取推荐文章
 	app.get('/',index.command);
@@ -40,7 +44,13 @@ exports.start = app=>{
 	app.post('/article/commit',article.commit);
 
 	// 详情页 根据文章ID获取评论列表
-	app.get('/article/comment',article.comment)
+	app.get('/article/comment',article.comment);
+
+	// 文字广告列表页
+	app.get('/textAds',textAds.list);
+
+	// 搜索
+	app.get('/search',search.list);
 
 	// 404
 	app.use(middleware.error);

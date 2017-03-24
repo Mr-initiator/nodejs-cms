@@ -19,7 +19,8 @@ module.exports = app=>{
 			limit,
 			sort:{
 				published:-1
-			}
+			},
+			select:'title author published clickVolume articleCover articleBrief comments'
 		},function(err,result){
 
 			err ? res.render('error') : res.render('list',{columnName,list:result});

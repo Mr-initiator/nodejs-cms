@@ -15,7 +15,8 @@ define(function(require,exports,module){
 		iBody = $('html,body'),
 		articleID = getUrlParam(location.href).id,
 		parentID = '-1',
-		str = '';
+		str = '',
+		SERVER_PATH = 'http://localhost:3000';
 
 	// 获取评论列表
 	getCommentLists(articleID);
@@ -78,7 +79,7 @@ define(function(require,exports,module){
 
 		$.ajax({
 			type:'post',
-			url:'http://localhost:3000/article/commit',
+			url:SERVER_PATH +'/article/commit',
 			data:{
 				id:articleID,
 				applyContent:applyContent.val(),
@@ -115,7 +116,7 @@ define(function(require,exports,module){
 
 		$.ajax({
 			type:'get',
-			url:'article/comment',
+			url:SERVER_PATH + '/article/comment',
 			data:{
 				id:id
 			},
@@ -164,6 +165,8 @@ define(function(require,exports,module){
 		commentList.html(str);
 
 		$(window).lazyLoadXT();
+
+		commentList.find('.comment-list .apply').remove();
 
 	}
 

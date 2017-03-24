@@ -11,7 +11,8 @@
 				span
 		#search.search.pra
 			.w1200
-				.search-body.prz
-					.body-waper.pra
-						input.body-input(type='text', placeholder='请输入关键词')
-					a.body-button.iconfont.icon-search.pra(href='javascript:;')
+				form(method="get",action="/search")
+					.search-body.prz
+						.body-waper.pra
+							input.body-input(type='text',name='keywords',placeholder='请输入关键词')
+						input.body-button.iconfont.icon-search.pra(type="submit")
