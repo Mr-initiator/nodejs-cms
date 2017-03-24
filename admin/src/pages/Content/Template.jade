@@ -42,7 +42,7 @@ a#article-trigger(href="#fancybox-article",fancybox)
 				input.form-control(type='text',disabled="disabled",autocomplete="off",ng-model="articleModel.language")
 		.form-group
 			label.col-sm-1.control-label.f13 是否推荐
-			.col-sm-11
+			.col-sm-11#recommend
 				label.checkbox-inline
 					input(type='checkbox',autocomplete="off",ng-click="updateCommand($event,'焦点图')",value="焦点图")
 					| 焦点图

@@ -20,6 +20,10 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 	// 文章模型弹出按钮
 	var articleTrigger = $('#article-trigger');
 
+	// 推荐盒子
+	var recommendInp = $('#recommend input[type="checkbox"]');
+
+
 	// 分页
 	$scope.pagination = pagination;
 
@@ -222,6 +226,29 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 					// 展示到页面中
 					$scope.articleModel = result;
 
+					// 去掉 是否推荐 所有选中项
+					for(var i=0;i<recommendInp.length;i++){
+
+						recommendInp.get(i).checked = false;
+
+					}
+
+					// 匹配 是否推荐 选中项
+					for(var i=0;i<result.recommend.length;i++){
+
+						for(var j=0;j<recommendInp.length;j++){
+							
+							if(recommendInp.get(j).value == result.recommend[i]){
+
+								recommendInp.get(j).checked = true;
+
+							}
+
+						}
+
+					}
+
+					// 触发弹层
 					articleTrigger.trigger('click');
 
 				}
@@ -531,6 +558,13 @@ export default function Controller($scope,$state,$stateParams,ContentSer,CommonJ
 
 		// 获取栏目内容
 		$scope.articleModel.articleContent = EdtorModule.articleCon.$txt.html('<p><br></p>');
+
+		// 去掉 是否推荐 所有选中项
+		for(var i=0;i<recommendInp.length;i++){
+
+			recommendInp.get(i).checked = false;
+
+		}
 
 	}
 
