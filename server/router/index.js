@@ -22,6 +22,12 @@ exports.start = app=>{
 	// 获取最新文章
 	app.get(['/','/list','/article','/textAds'],middleware.GetLastedArticle);
 
+	// 获取视频教程分类列表
+	app.get(['/','/list','/article','/textAds'],middleware.GetSecondColumns);
+
+	// 获取强烈推荐
+	app.get(['/','/list','/article','/textAds'],middleware.StronglyCommend);
+
 	// 首页 获取推荐文章
 	app.get('/',index.command);
 

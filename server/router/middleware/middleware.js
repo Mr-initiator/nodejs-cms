@@ -95,6 +95,60 @@ module.exports = app=>{
 
 	}
 
+	// 获取二级栏目信息
+	this.GetSecondColumns = (req,res,next)=>{
+
+		var language = app.locals.language;
+
+		columnModel.findOne({title : '视频教程'})
+		.select('title')
+		.exec(function(err,result){
+
+			if(err || (null == result)){
+
+				app.locals.secondColumns = {};
+
+				next();
+
+			}else{
+
+				columnModel.find({parent:result._id,language:language}).
+				select('title link')
+				.exec(function(err,doc){
+
+					app.locals.secondColumns = ( err || (null == doc) ) ? {} : doc;
+
+					next();
+
+				})
+
+			}
+
+		})
+
+	}
+
+	// 获取强烈推荐内容
+	this.StronglyCommend = (req,res,next)=>{
+
+		var language = app.locals.language;
+
+		articleModel.findOne({
+			language:language,
+			columnName:'强烈推荐',
+			recommend:{$in:['强烈推荐']}
+		})
+		.select('title forceUrl articleBrief')
+		.exec((err,result)=>{
+			console.log(result)
+			app.locals.strongly = (err || (null == result)) ? {} : result;
+
+			next();
+
+		})
+
+	}
+
 	// 404
 	this.error = (req,res)=>{
 		res.render('error');

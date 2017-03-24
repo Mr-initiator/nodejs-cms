@@ -9,15 +9,10 @@
 	.Hematemesis
 		h4.ibox 强烈推荐
 		h2.comand-title
-			a(href='#') 《水浒传》中作者曾埋下一个很大的伏笔，不知道你们有没有注意！
-		.instro
-			| 自国家出台鼓励政策后，特色小镇建设进入快速发展阶段。但记者在多地采访发现，有些地方依靠政府部门打造“政绩小镇”；有些特色小镇建设成为房地产商制造新库存的新手段，“房地产化”明显；还有些地方重“形”轻“魂”，特色小镇特色不足。专家提醒，对特色小镇“不特”现象应提高警惕，谨防异化。必须遵循规律，有重点、有特色地发展，不能一哄而上。应该发挥市场主体作用，政府应做好支持和引导，不可大包大揽，更不可越俎代庖。
+			a(href='#{strongly.forceUrl}' target='_blank') #{strongly.title}
+		.instro !{strongly.articleBrief}
 	#tag-cloud.section
-		h5 分类列表
+		h5 视频教程
 		.cloud.clearfix
-			a(href='#') 前端技巧(61)
-			a(href='#') Css
-			a(href='#') JavaScript
-			a(href='#') 用户体验
-			a(href='#') 设计思路
-			a(href='#') HTML5
+			each item in secondColumns
+				a(href="#{item.link}?name=#{item.title}") #{item.title}

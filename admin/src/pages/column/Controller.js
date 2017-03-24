@@ -293,7 +293,7 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 		// 获取权重
 		$scope.formData.weight = !$scope.formData.weight ? 1 : $scope.formData.weight;
-
+		
 		// 发送添加栏目请求
 		ColumnSer.addColumn($scope.formData,Token).then(response=>{
 
@@ -353,7 +353,7 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 	// 修改栏目弹出
 	function modifyfancy(id){
 
-		$scope.sign = { isModify : true,modifyID : id } 
+		$scope.sign = { isModify : true,modifyID : id }
 
 		CommonJs.getCurrentLang(Token,function(language){
 
@@ -451,6 +451,8 @@ export default function Controller($scope,$state,ColumnSer,CommonJs,FileUploader
 
 	// 增加子栏目
 	function addChildColumn(id){
+
+		$scope.sign = { isModify : false,modifyID : 0 };
 
 		CommonJs.getCurrentLang(Token,function(language){
 
