@@ -64,8 +64,17 @@ module.exports = app=>{
 		})
 		.select('title forceUrl articleBrief columnName')
 		.exec(function(err,result){
-			
-			app.locals.textAds = result;
+
+			if(null == result){
+
+				app.locals.textAds = {};
+
+			}else{
+
+				app.locals.textAds = result;
+
+			}
+
 
 			err ? res.render('error') : res.render('index');
 

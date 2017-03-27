@@ -16,9 +16,17 @@ module.exports = app=>{
 
 		languageModel.findOne({lang_field:language},function(err,result){
 
-			if(err || (null == result)){
+			if(err){
 
 				res.render('error');
+
+			}else if(null == result){
+
+				app.locals.settings = {};
+
+				app.locals.language = 'ch';
+
+				next();
 
 			}else{
 
@@ -59,6 +67,12 @@ module.exports = app=>{
 
 				res.render('error');
 
+			}else if(result == null){
+
+				app.locals.navigation = {};
+				
+				next();
+
 			}else{
 
 				app.locals.navigation = result;
@@ -81,6 +95,10 @@ module.exports = app=>{
 			if(err){
 
 				res.render('error');
+
+			}else if(null == result){
+
+				app.locals.lasted = {};
 
 			}else{
 
@@ -140,7 +158,7 @@ module.exports = app=>{
 		})
 		.select('title forceUrl articleBrief')
 		.exec((err,result)=>{
-			console.log(result)
+
 			app.locals.strongly = (err || (null == result)) ? {} : result;
 
 			next();
